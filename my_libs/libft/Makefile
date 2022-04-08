@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/12 02:08:39 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/07 21:25:49 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/08 04:54:56 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 
 NAME =			libft.a
 
-HEADER =		./src/libft.h
-GNL_HEADER =	./src/gnl/get_next_line.h
+HEADER =		libft.h
+GNL_HEADER =	get_next_line.h
 
 SRC_PATH =	./src
 GNL_PATH =	./src/gnl
@@ -41,6 +41,8 @@ SRCS_GNL =	$(addprefix $(GNL_PATH)/, $(GNL_FILES))
 OBJS =		$(SRCS:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 OBJS_GNL =	$(SRCS_GNL:$(GNL_PATH)/%.c=$(OBJ_PATH)/%.o)
 
+INCLUDES =	-I./
+
 # compilation
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
@@ -54,14 +56,14 @@ RM_DIR =	rm -rf
 
 all:	$(NAME)
 
-$(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c $(HEADER)
 	@mkdir -p $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
-$(OBJ_PATH)/%.o:	$(GNL_PATH)/%.c
-	@$(CC) $(CFLAGS) $(GNLFLAGS) -c $< -o $@
+$(OBJ_PATH)/%.o:	$(GNL_PATH)/%.c $(HEADER) $(GNL_HEADER)
+	@$(CC) $(CFLAGS) $(GNLFLAGS) -c $< -o $@ $(INCLUDES)
 
-$(NAME):	$(OBJS) $(OBJS_GNL) #$(HEADER) $(GNL_HEADER)
+$(NAME):	$(OBJS) $(OBJS_GNL)
 	@ar rc $@ $(OBJS) $(OBJS_GNL)
 	@ranlib $@
 

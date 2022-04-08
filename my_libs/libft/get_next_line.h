@@ -6,14 +6,14 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:57:23 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/01 18:31:40 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/08 03:46:11 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "../libft.h"
+# include "libft.h"
 # include <limits.h>
 
 # define READ_OK 1

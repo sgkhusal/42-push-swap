@@ -6,13 +6,15 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 17:01:10 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/01 19:47:45 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/08 04:53:49 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # creates libftprintf.a library
 
 NAME =			libftprintf.a
+
+HEADER =		ft_printf.h
 
 SRC_PATH =		./src
 OBJ_PATH =		./obj
@@ -30,6 +32,8 @@ SRC_FILES =		1_ft_printf.c \
 SRC =		$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =		$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
+INCLUDES =	-I./ -I../libft
+
 # compilation
 CC =		clang
 CFLAGS = 	-Wall -Werror -Wextra
@@ -43,9 +47,9 @@ all:	$(NAME)
 
 bonus:	$(NAME)
 
-$(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c $(HEADER)
 	@mkdir -p $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 $(NAME):	$(OBJ)
 	@ar rc $@ $(OBJ)

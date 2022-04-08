@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 22:00:10 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/01 19:47:10 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/08 03:48:44 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "../../libft/src/libft.h"
+# include "libft.h"
 
 # define STDOUT	1
 # define CONVERSIONS "cspdiuxX"
