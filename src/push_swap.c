@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/09 18:02:29 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/09 18:12:30 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	*ps_check_args(int stack_size, char *numbers[])
 		nbs[i] = ft_atoi(numbers[i]);
 		i++;
 	}
+	ps_check_repeated_nb(stack_size, nbs);
 	return (nbs);
 }
 
