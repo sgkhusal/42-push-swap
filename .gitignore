@@ -3,9 +3,6 @@
 
 # Object files
 *.o
-*.ko
-*.obj
-*.elf
 
 # Linker output
 *.ilk
@@ -35,6 +32,8 @@
 *.i*86
 *.x86_64
 *.hex
+push_swap
+checker
 
 # Debug files
 *.dSYM/
