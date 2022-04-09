@@ -52,8 +52,17 @@ echo "Test 3: number bigger than an integer"
 printf "$GREY"
 
 printf "\n"
-echo "./push_swap 10 1 2 3 5 0 1 9 8"
-./push_swap 10 1 2 3 5 0 1 9 8
+echo "./push_swap 10 1 2 3 5 0 2147483648 9 8"
+./push_swap 10 1 2 3 5 0 2147483648 9 8
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 4: number lesser than an integer"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 10 1 2 3 5 0 -2147483649 9 8"
+./push_swap 10 1 2 3 5 0 -2147483649 9 8
 
 printf "\n"
 printf "$END"
