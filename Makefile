@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/08 04:43:48 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/09 17:23:00 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJ_PATH =			obj
 HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
-SRC_FILES =			push_swap.c
+SRC_FILES =			push_swap.c push_swap_utils.c
 #SRC_BONUS_FILES =	
 HEADER_FILES =		push_swap.h
 
@@ -91,7 +91,8 @@ $(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(HEADER)
 #	@echo "\033[0m"
 
 TESTS =	test0 test1 test2 test3 test4 test5 test8 test10 test100 test500
-run:	$(TESTS)
+#run:	$(TESTS)
+run:	test0 test1 test2 test3 test10
 
 test0:	$(NAME)
 	@echo "\033[1;35m"
@@ -101,19 +102,7 @@ test0:	$(NAME)
 	@echo "\033[1;35m"
 	@echo "Test 0.1: numbers in order"
 	@echo "\033[38;5;244m"
-	seq 1 10 | tr '\n' ' ' | xargs | ./$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 0.2: invalid arguments"
-	@echo "\033[38;5;244m"
-	./$(NAME) 10 1 2 3 5 + 0 9 8
-	./$(NAME) 10 1 2 3 5 - 0 9 8
-	./$(NAME) 10 b 2 3 5 1 0 9 8
-	./$(NAME) 10 4 * 3 5 1 0 9 8
-	@echo "\033[1;35m"
-	@echo "Test 0.3: repeated number"
-	@echo "\033[38;5;244m"
-	./$(NAME) 10 1 2 3 5 0 1 9 8
-	@echo "\033[0m"
+	seq 1 10 | tr '\n' ' ' | xargs ./$(NAME)
 
 test1:	$(NAME)
 	@echo "\033[1;35m"
@@ -127,7 +116,7 @@ test2:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	./$(NAME) 6 10
+	./$(NAME) 6 -10
 	@echo "\033[0m"
 
 test3:	$(NAME)
@@ -136,7 +125,7 @@ test3:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 3 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	./$(NAME) 2 1 3
 	@echo "\033[0m"
 
 test4:	$(NAME)
@@ -145,7 +134,7 @@ test4:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 4 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 4 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0m"
 
 test5:	$(NAME)
@@ -154,7 +143,7 @@ test5:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 5 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 5 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0m"
 
 test8:	$(NAME)
@@ -163,11 +152,11 @@ test8:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 8 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 8 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0;36m"
 	@echo "Total movements: (different input!!)"
 	@echo "\033[38;5;244m"
-	seq 1 8 | tr '\n' ' ' | shuf | xargs | ./$(NAME) | wc -l
+	seq 1 8 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
 test10:	$(NAME)
@@ -176,11 +165,11 @@ test10:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 10 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 10 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0;36m"
 	@echo "Total movements: (different input!!)"
 	@echo "\033[38;5;244m"
-	seq 1 10 | tr '\n' ' ' | shuf | xargs | ./$(NAME) | wc -l
+	seq 1 10 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
 test100:	$(NAME)
@@ -189,11 +178,11 @@ test100:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 100 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 100 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0;36m"
 	@echo "Total movements: (different input!!)"
 	@echo "\033[38;5;244m"
-	seq 1 100 | tr '\n' ' ' | shuf | xargs | ./$(NAME) | wc -l
+	seq 1 100 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
 test500:	$(NAME)
@@ -202,11 +191,11 @@ test500:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 500 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 500 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0;36m"
 	@echo "Total movements: (different input!!)"
 	@echo "\033[38;5;244m"
-	seq 1 500 | tr '\n' ' ' | shuf | xargs | ./$(NAME) | wc -l
+	seq 1 500 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
 test1000:	$(NAME)
@@ -215,11 +204,11 @@ test1000:	$(NAME)
 	@echo "\033[0;36m"
 	@echo "Movements result:"
 	@echo "\033[38;5;244m"
-	seq 1 1000 | tr '\n' ' ' | shuf | xargs | ./$(NAME)
+	seq 1 1000 | shuf | tr '\n' ' ' | xargs ./$(NAME)
 	@echo "\033[0;36m"
 	@echo "Total movements: (different input!!)"
 	@echo "\033[38;5;244m"
-	seq 1 1000 | tr '\n' ' ' | shuf | xargs | ./$(NAME) | wc -l
+	seq 1 1000 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
 $(LIBFT):
