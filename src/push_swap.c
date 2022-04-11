@@ -6,19 +6,21 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/09 18:12:30 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:59:43 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_error(void)
+void	ps_error(long int *nbs)
 {
-	ft_printf_fd(2, "Error\n");
+	if (nbs != NULL)
+		free(nbs);
+	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
 
-void	ps_check_repeated_nb(int stack_size, int *nbs)
+void	ps_check_repeated_nb(int stack_size, long int *nbs)
 {
 	int	i;
 	int	j;
@@ -26,15 +28,14 @@ void	ps_check_repeated_nb(int stack_size, int *nbs)
 	i = 0;
 	while (i < stack_size)
 	{
-		j = i;
+		j = i + 1;
 		while (j < stack_size)
 		{
 			if (nbs[i] == nbs[j])
-			{
-				free(nbs);
-				ps_error();
-			}
+				ps_error(nbs);
+			j++;
 		}
+		i++;
 	}
 }
 
@@ -51,7 +52,9 @@ int	ps_check_char(char *nb)
 		{
 			if (nb[j] != '-' && nb[j] != '+')
 				return (E_NOT_INT);
-			if ((nb[j] != '-' || nb[j] != '+') && nb_size == 1)
+			if ((nb[j] == '-' || nb[j] == '+') && nb_size == 1)
+				return (E_NOT_INT);
+			if ((nb[j] == '-' || nb[j] == '+') && j > 1)
 				return (E_NOT_INT);
 		}
 		j++;
@@ -62,24 +65,23 @@ int	ps_check_char(char *nb)
 int	*ps_check_args(int stack_size, char *numbers[])
 {
 	int	i;
-	int	*nbs;
+	long int	*nbs;
 
-	nbs = (int *) malloc(stack_size * sizeof(int));
+	nbs = (long int *) malloc(stack_size * sizeof(long int));
 	if (nbs == NULL)
-		ps_error();
+		ps_error(NULL);
 	i = 0;
 	while (i < stack_size)
 	{
 		if (ps_check_char(numbers[i]) == E_NOT_INT)
-		{
-			free(nbs);
-			ps_error();
-		}
-		nbs[i] = ft_atoi(numbers[i]);
+			ps_error(nbs);
+		nbs[i] = ft_atol(numbers[i]);
+		if (nbs[i] > 2147483647 || nbs[i] < -2147483648)
+			ps_error(nbs);
 		i++;
 	}
 	ps_check_repeated_nb(stack_size, nbs);
-	return (nbs);
+	return ((int *)nbs);
 }
 
 int	main(int argc, char *argv[])

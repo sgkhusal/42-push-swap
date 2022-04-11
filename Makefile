@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/09 17:23:00 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/11 21:09:33 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -211,7 +211,7 @@ test1000:	$(NAME)
 	seq 1 1000 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
 	@echo "\033[0m"
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_PATH)libft.h
 	cd $(LIBFT_PATH) && $(MAKE)
 	@echo "libft.a created"
 
