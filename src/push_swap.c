@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/11 20:59:43 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:36:39 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ void	ps_error(long int *nbs)
 		free(nbs);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
+}
+
+void	ps_check_order(int stack_size, long int *nbs)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_size - 1)
+	{
+		if (nbs[i] > nbs[i + 1])
+			return ;
+		i++;
+	}
+	free(nbs);
+	exit(EXIT_SUCCESS);
 }
 
 void	ps_check_repeated_nb(int stack_size, long int *nbs)
@@ -80,7 +95,13 @@ int	*ps_check_args(int stack_size, char *numbers[])
 			ps_error(nbs);
 		i++;
 	}
+	if (stack_size == 1)
+	{
+		free(nbs);
+		exit(EXIT_SUCCESS);
+	}
 	ps_check_repeated_nb(stack_size, nbs);
+	ps_check_order(stack_size, nbs);
 	return ((int *)nbs);
 }
 
