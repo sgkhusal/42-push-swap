@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/11 21:09:33 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/11 22:10:14 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,74 +90,12 @@ $(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(HEADER)
 #	@echo "************************************"
 #	@echo "\033[0m"
 
-TESTS =	test0 test1 test2 test3 test4 test5 test8 test10 test100 test500
+TESTS =	test0 test10 test100 test500
 #run:	$(TESTS)
-run:	test0 test1 test2 test3 test10
+run:	test0 test10
 
-test0:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 0.0: 0 numbers"
-	@echo "\033[38;5;244m"
-	./$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 0.1: numbers in order"
-	@echo "\033[38;5;244m"
-	seq 1 10 | tr '\n' ' ' | xargs ./$(NAME)
-
-test1:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 1: 1 number"
-	@echo "\033[38;5;244m"
-	./$(NAME) 10
-
-test2:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 2: 2 numbers"
-	@echo "\033[0;36m"
-	@echo "Movements result:"
-	@echo "\033[38;5;244m"
-	./$(NAME) 6 -10
-	@echo "\033[0m"
-
-test3:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 3: 3 numbers, 1 to 3"
-	@echo "\033[0;36m"
-	@echo "Movements result:"
-	@echo "\033[38;5;244m"
-	./$(NAME) 2 1 3
-	@echo "\033[0m"
-
-test4:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 4: 4 numbers, 1 to 4"
-	@echo "\033[0;36m"
-	@echo "Movements result:"
-	@echo "\033[38;5;244m"
-	seq 1 4 | shuf | tr '\n' ' ' | xargs ./$(NAME)
-	@echo "\033[0m"
-
-test5:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 5: 5 numbers, 1 to 5"
-	@echo "\033[0;36m"
-	@echo "Movements result:"
-	@echo "\033[38;5;244m"
-	seq 1 5 | shuf | tr '\n' ' ' | xargs ./$(NAME)
-	@echo "\033[0m"
-
-test8:	$(NAME)
-	@echo "\033[1;35m"
-	@echo "Test 8: 8 numbers, 1 to 8"
-	@echo "\033[0;36m"
-	@echo "Movements result:"
-	@echo "\033[38;5;244m"
-	seq 1 8 | shuf | tr '\n' ' ' | xargs ./$(NAME)
-	@echo "\033[0;36m"
-	@echo "Total movements: (different input!!)"
-	@echo "\033[38;5;244m"
-	seq 1 8 | shuf | tr '\n' ' ' | xargs ./$(NAME) | wc -l
-	@echo "\033[0m"
+test0::	$(NAME)
+	cd tests && ./tester.sh
 
 test10:	$(NAME)
 	@echo "\033[1;35m"
