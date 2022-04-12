@@ -94,7 +94,7 @@ echo "./push_swap 10 1 2 3 5 0 9 2147483648 8"
 
 printf "\n"
 printf "$PURPLE"
-echo "Test 4: number lesser than an integer"
+echo "Test 4: number smaller than an integer"
 printf "$GREY"
 
 printf "\n"
