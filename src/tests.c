@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:05:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 21:28:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:42:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_reverse_stack(t_stack *stack)
 
 void	test_swap(t_stack *stack)
 {
-	ft_printf("Testing swap:\n");
+	ft_printf("\nTesting swap:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
 	swap(&stack->init);
@@ -51,10 +51,10 @@ void	test_swap(t_stack *stack)
 
 void	test_rotate(t_stack *stack)
 {
-	ft_printf("Testing rotate:\n");
+	ft_printf("\nTesting rotate:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
-	//stack->init = rotate(stack->init);
+	rotate(stack);
 	ft_printf("Final stack:\n");
 	print_stack(stack);
 	print_reverse_stack(stack);
@@ -62,10 +62,10 @@ void	test_rotate(t_stack *stack)
 
 void	test_reverse_rotate(t_stack *stack)
 {
-	ft_printf("Testing reverse rotate:\n");
+	ft_printf("\nTesting reverse rotate:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
-	//stack->init = reverse_rotate(stack->init);
+	//reverse_rotate(stack);
 	ft_printf("Final stack:\n");
 	print_stack(stack);
 	print_reverse_stack(stack);
@@ -73,7 +73,7 @@ void	test_reverse_rotate(t_stack *stack)
 
 void	test_push(t_stack *src, t_stack *dst)
 {
-	ft_printf("Testing push:\n");
+	ft_printf("\nTesting push:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(src);
 	ft_printf("Destiny stack:\n");
