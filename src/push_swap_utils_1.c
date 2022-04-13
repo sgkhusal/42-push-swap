@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_push_swap.c                                      :+:      :+:    :+:   */
+/*   push_swap_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 21:26:28 by sguilher         ###   ########.fr       */
+/*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
+/*   Updated: 2022/04/13 21:31:24 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "test.h"
 
-int	main(int argc, char *argv[])
+void	push(t_dlist *src, t_dlist *dst)
 {
-	t_push_swap	data;
-
-	if (argc == 1)
-		return (0);
-	data.stack_size = argc - 1;
-	data.stack_a = ps_init_stack_a(data.stack_size, &argv[1]);
-	//ft_printf("From double linked list:\n");
-	//print_stack(data.stack_a);
-	//print_reverse_stack(data.stack_a);
-	test_swap(data.stack_a);
-	clean_stack(data.stack_a);
-	return (0);
+	dst->prev = src;
+	src = src->next;
+	src->prev = NULL;
+	dst->prev->next = dst;
+	dst = dst->prev;
 }
+
+void	swap(t_dlist **lst)
+{
+	(*lst)->prev = (*lst)->next;
+	(*lst)->next = (*lst)->next->next;
+	(*lst)->next->prev = *lst;
+	(*lst)->prev->next = *lst;
+	*lst = (*lst)->prev;
+	(*lst)->prev = NULL;
+}
+
+/* void	rotate(t_stack *stack)
+{
+	
+}
+
+void	reverse_rotate(t_stack *stack)
+{
+	
+} */

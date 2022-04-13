@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/13 19:44:59 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/13 21:27:21 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_push_swap.c 2_push_swap_init.c 3_push_swap_check_args.c \
-					push_swap_utils.c clean.c
+					push_swap_utils_1.c push_swap_utils_2.c clean.c tests.c
 #SRC_BONUS_FILES =	
 HEADER_FILES =		push_swap.h
 
