@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:40:56 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:49:37 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(int argc, char *argv[])
 {
 	t_push_swap	data;
-	t_dlist	*tmp;
-	
+	t_dlist		*tmp;
+
 	if (argc == 1)
 		return (0);
 	data.stack_size = argc - 1;

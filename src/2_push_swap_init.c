@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:39:46 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:49:22 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 {
 	t_stack		*stack;
 	long int	nb;
-	
+
 	if (ps_check_char(numbers[0]) == E_NOT_INT)
 		ps_error(NULL);
 	if (stack_size == 1)
