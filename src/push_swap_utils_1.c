@@ -6,20 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:07:43 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:11:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	push(t_dlist *src, t_dlist *dst)
-{
-	dst->prev = src;
-	src = src->next;
-	src->prev = NULL;
-	dst->prev->next = dst;
-	dst = dst->prev;
-}
 
 void	swap(t_dlist **lst)
 {
@@ -49,4 +40,13 @@ void	reverse_rotate(t_stack *stack)
 	stack->end = stack->end->prev;
 	stack->init->prev = NULL;
 	stack->end->next = NULL;
+}
+
+void	push(t_dlist *src, t_dlist *dst)
+{
+	dst->prev = src;
+	src = src->next;
+	src->prev = NULL;
+	dst->prev->next = dst;
+	dst = dst->prev;
 }

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:49:22 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:22:24 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 		exit(EXIT_SUCCESS);
 	else
 	{
-		stack = (t_stack *)malloc(sizeof(t_stack));
+		stack = init_stack();
 		if (stack == NULL)
 			ps_error(NULL);
 		nb = ft_atol(numbers[0]);
@@ -61,8 +61,19 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 		stack->init = ft_dlstnew((int) nb);
 		if (stack->init == NULL)
 			ps_error(stack);
-		stack->end = NULL;
 		ps_fill_stack_a(stack, stack_size, numbers);
 	}
+	return (stack);
+}
+
+t_stack	*init_stack()
+{
+	t_stack *stack;
+	
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return(NULL);
+	stack->init = NULL;
+	stack->end = NULL;
 	return (stack);
 }
