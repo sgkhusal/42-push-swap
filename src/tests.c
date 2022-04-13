@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:05:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 21:42:26 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:09:19 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	test_reverse_rotate(t_stack *stack)
 	ft_printf("\nTesting reverse rotate:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
-	//reverse_rotate(stack);
+	reverse_rotate(stack);
 	ft_printf("Final stack:\n");
 	print_stack(stack);
 	print_reverse_stack(stack);

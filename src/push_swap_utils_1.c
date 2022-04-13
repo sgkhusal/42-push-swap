@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 21:41:31 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:07:43 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,20 @@ void	swap(t_dlist **lst)
 
 void	rotate(t_stack *stack)
 {
-	stack->end->next = stack->init;
 	stack->init->prev = stack->end;
+	stack->end->next = stack->init;
 	stack->end = stack->init;
 	stack->init = stack->init->next;
 	stack->init->prev = NULL;
 	stack->end->next = NULL;
 }
 
-/* void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
-	
-} */
+	stack->init->prev = stack->end;
+	stack->end->next = stack->init;
+	stack->init = stack->end;
+	stack->end = stack->end->prev;
+	stack->init->prev = NULL;
+	stack->end->next = NULL;
+}
