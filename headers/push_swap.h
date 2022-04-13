@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:33:22 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:42:16 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,17 @@ typedef struct s_push_swap
 	int		stack_size;
 }			t_push_swap;
 
+t_stack	*ps_init_stack_a(int stack_size, char *numbers[]);
+int		ps_check_char(char *nb);
+void	ps_check_repeated_nb(t_stack *stack);
+void	ps_check_order(t_stack *stack);
+
+void	clean_stack(t_stack *stack);
+void	ps_error(t_stack *stack);
+
 t_dlist	*ft_dlstnew(int nb);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
-
-void	clean_stack(t_stack *stack);
 
 #endif
