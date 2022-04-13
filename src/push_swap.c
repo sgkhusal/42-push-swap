@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:24:27 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:32:39 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ps_error(t_stack *stack)
 {
 	if (stack != NULL)
-		free(stack);
+		clean_stack(stack);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
@@ -34,7 +34,7 @@ void	ps_check_order(t_stack *stack)
 		aux1 = aux2;
 		aux2 = aux2->next;
 	}
-	free(stack); //
+	clean_stack(stack);
 	exit(EXIT_SUCCESS);
 }
 
@@ -159,6 +159,6 @@ int	main(int argc, char *argv[])
 		tmp = tmp->prev;
 	}
 	ft_printf("\n");
-	free(data.stack_a);
+	clean_stack(data.stack_a);
 	return (0);
 }

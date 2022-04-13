@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/11 21:13:26 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:33:22 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ t_dlist	*ft_dlstnew(int nb);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
+
+void	clean_stack(t_stack *stack);
 
 #endif
