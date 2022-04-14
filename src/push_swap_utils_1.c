@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:11:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:54:20 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,35 @@ void	reverse_rotate(t_stack *stack)
 	stack->end->next = NULL;
 }
 
-void	push(t_dlist *src, t_dlist *dst)
+void	normal_push(t_stack *src, t_stack *dst)
 {
-	dst->prev = src;
-	src = src->next;
-	src->prev = NULL;
-	dst->prev->next = dst;
-	dst = dst->prev;
+	dst->init->prev = src->init;
+	src->init = src->init->next;
+	dst->init->prev->next = dst->init;
+	dst->init = dst->init->prev;
+	dst->init->prev = NULL;
+	src->init->prev = NULL;
+}
+
+void	push(t_stack *src, t_stack *dst)
+{
+	if (dst->init == NULL)
+	{
+		dst->init = src->init;
+		dst->end = dst->init;
+		src->init = src->init->next;
+		dst->init->next = NULL;
+		dst->init->prev = NULL;
+		src->init->prev = NULL;
+	}
+	else if (src->init == src->end)
+	{
+		dst->init->prev = src->init;
+		src->init->next = dst->init;
+		dst->init = src->init;
+		src->init = NULL;
+		src->end = NULL;
+	}
+	else
+		normal_push(src, dst);
 }

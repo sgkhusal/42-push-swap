@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:25:30 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:49:34 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ps_check_char(char *nb);
 void	ps_check_repeated_nb(t_stack *stack);
 void	ps_check_order(t_stack *stack);
 
-void	push(t_dlist *src, t_dlist *dst);
+void	push(t_stack *src, t_stack *dst);
 void	swap(t_dlist **lst);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:05:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:09:19 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:50:53 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_stack(t_stack *stack)
 {
-	t_dlist		*tmp;
-	
+	t_dlist	*tmp;
+
 	tmp = stack->init;
 	while (tmp != NULL)
 	{
@@ -27,8 +27,8 @@ void	print_stack(t_stack *stack)
 
 void	print_reverse_stack(t_stack *stack)
 {
-	t_dlist		*tmp;
-	
+	t_dlist	*tmp;
+
 	tmp = stack->end;
 	while (tmp != NULL)
 	{
@@ -78,7 +78,7 @@ void	test_push(t_stack *src, t_stack *dst)
 	print_stack(src);
 	ft_printf("Destiny stack:\n");
 	print_stack(dst);
-	push(src->init, dst->init);
+	push(src, dst);
 	ft_printf("Results:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(src);

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:22:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:28:19 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	main(int argc, char *argv[])
 	test_swap(data.stack_a);
 	test_rotate(data.stack_a);
 	test_reverse_rotate(data.stack_a);
+	test_push(data.stack_a, data.stack_b);
+	test_push(data.stack_a, data.stack_b);
+	test_push(data.stack_b, data.stack_a);
+	test_push(data.stack_b, data.stack_a);
 	clean_stack(data.stack_a);
 	clean_stack(data.stack_b);
 	return (0);

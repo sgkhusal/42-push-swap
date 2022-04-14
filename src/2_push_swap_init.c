@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:22:24 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:52:48 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 	return (stack);
 }
 
-t_stack	*init_stack()
+t_stack	*init_stack(void)
 {
-	t_stack *stack;
-	
+	t_stack	*stack;
+
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-		return(NULL);
+		return (NULL);
 	stack->init = NULL;
 	stack->end = NULL;
 	return (stack);
