@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/13 21:27:21 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/14 22:27:16 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME =					push_swap
 
 # **************************************************************************** #
 # MY LIBRARIES - libft.a and libftprintf.a
-
 
 LIBFT_PATH =	./my_libs/libft/
 PRINTF_PATH =	./my_libs/ft_printf/
@@ -38,7 +37,8 @@ HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_push_swap.c 2_push_swap_init.c 3_push_swap_check_args.c \
-					push_swap_utils_1.c push_swap_utils_2.c clean.c tests.c
+					push_swap_utils_1.c push_swap_utils_2.c clean.c \
+					tests.c tests_mov.c
 #SRC_BONUS_FILES =	
 HEADER_FILES =		push_swap.h
 
@@ -50,7 +50,6 @@ HEADER =			$(addprefix $(HEADER_PATH)/, $(HEADER_FILES))
 #OBJ_BONUS =			$(SRC_BONUS:$(SRC_BONUS_PATH)/%.c=$(OBJ_BONUS_PATH)/%.o)
 
 # **************************************************************************** #
-
 
 # compilation
 CC =		gcc
@@ -75,7 +74,7 @@ $(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c $(HEADER)
 #	@mkdir -p $(OBJ_BONUS_PATH)
 #	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(HEADER)
+$(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(OBJ_TEST) $(HEADER) ##########
 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(PRINTF) $(LIBFT)
 	@echo "\033[1;32m"
 	@echo "************************************"
