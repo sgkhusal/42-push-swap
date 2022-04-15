@@ -5,72 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:52:26 by sguilher         ###   ########.fr       */
+/*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
+/*   Updated: 2022/04/15 02:21:47 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new)
-{
-	if (lst_init && new)
-	{
-		new->next = *lst_init;
-		new->prev = NULL;
-		*lst_init = new;
-	}
-}
-
-void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new)
-{
-	if (lst_end && new)
-	{
-		(*lst_end)->next = new;
-		new->next = NULL;
-		new->prev = *lst_end;
-		*lst_end = new;
-	}
-}
-
-t_dlist	*ft_dlstnew(int nb)
-{
-	t_dlist	*new;
-
-	new = malloc(sizeof(t_dlist));
-	if (!new)
-		return (NULL);
-	new->nb = nb;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
-
-void	ft_dlstdel(t_dlist *dlist)
+int	ps_bigger(t_stack *stack)
 {
 	t_dlist	*aux;
+	int		big;
 
-	if (dlist == NULL)
-		return ;
-	while (dlist)
+	big = stack->init->nb;
+	aux = stack->init->next;
+	while (aux)
 	{
-		aux = dlist->next;
-		dlist->next = NULL;
-		dlist->prev = NULL;
-		free(dlist);
-		dlist = aux;
+		if (aux->nb > big)
+			big = aux->nb;
+		aux = aux->next;
 	}
+	return (big);
 }
 
-int	ps_add_elem(t_stack *stack, char *nbr, int idx)
+int	ps_smaller(t_stack *stack)
 {
-	t_dlist	*new;
+	t_dlist	*aux;
+	int		small;
 
-	new = ft_dlstnew(ft_atoi(nbr));
-	if (new == NULL)
-		return (E_MALLOC);
-	if (idx == 0)
-		stack->init = new;
-	ft_dlstadd_back(&stack->end, new);
-	return (0);
+	small = stack->init->nb;
+	aux = stack->init->next;
+	while (aux)
+	{
+		if (aux->nb < small)
+			small = aux->nb;
+		aux = aux->next;
+	}
+	return (small);
 }

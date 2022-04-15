@@ -1,76 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_1.c                                :+:      :+:    :+:   */
+/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/14 21:54:20 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:52:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_dlist **lst)
+void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new)
 {
-	(*lst)->prev = (*lst)->next;
-	(*lst)->next = (*lst)->next->next;
-	(*lst)->next->prev = *lst;
-	(*lst)->prev->next = *lst;
-	*lst = (*lst)->prev;
-	(*lst)->prev = NULL;
-}
-
-void	rotate(t_stack *stack)
-{
-	stack->init->prev = stack->end;
-	stack->end->next = stack->init;
-	stack->end = stack->init;
-	stack->init = stack->init->next;
-	stack->init->prev = NULL;
-	stack->end->next = NULL;
-}
-
-void	reverse_rotate(t_stack *stack)
-{
-	stack->init->prev = stack->end;
-	stack->end->next = stack->init;
-	stack->init = stack->end;
-	stack->end = stack->end->prev;
-	stack->init->prev = NULL;
-	stack->end->next = NULL;
-}
-
-void	normal_push(t_stack *src, t_stack *dst)
-{
-	dst->init->prev = src->init;
-	src->init = src->init->next;
-	dst->init->prev->next = dst->init;
-	dst->init = dst->init->prev;
-	dst->init->prev = NULL;
-	src->init->prev = NULL;
-}
-
-void	push(t_stack *src, t_stack *dst)
-{
-	if (dst->init == NULL)
+	if (lst_init && new)
 	{
-		dst->init = src->init;
-		dst->end = dst->init;
-		src->init = src->init->next;
-		dst->init->next = NULL;
-		dst->init->prev = NULL;
-		src->init->prev = NULL;
+		new->next = *lst_init;
+		new->prev = NULL;
+		*lst_init = new;
 	}
-	else if (src->init == src->end)
+}
+
+void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new)
+{
+	if (lst_end && new)
 	{
-		dst->init->prev = src->init;
-		src->init->next = dst->init;
-		dst->init = src->init;
-		src->init = NULL;
-		src->end = NULL;
+		(*lst_end)->next = new;
+		new->next = NULL;
+		new->prev = *lst_end;
+		*lst_end = new;
 	}
-	else
-		normal_push(src, dst);
+}
+
+t_dlist	*ft_dlstnew(int nb)
+{
+	t_dlist	*new;
+
+	new = malloc(sizeof(t_dlist));
+	if (!new)
+		return (NULL);
+	new->nb = nb;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
+
+void	ft_dlstdel(t_dlist *dlist)
+{
+	t_dlist	*aux;
+
+	if (dlist == NULL)
+		return ;
+	while (dlist)
+	{
+		aux = dlist->next;
+		dlist->next = NULL;
+		dlist->prev = NULL;
+		free(dlist);
+		dlist = aux;
+	}
+}
+
+int	ps_add_elem(t_stack *stack, char *nbr, int idx)
+{
+	t_dlist	*new;
+
+	new = ft_dlstnew(ft_atoi(nbr));
+	if (new == NULL)
+		return (E_MALLOC);
+	if (idx == 0)
+		stack->init = new;
+	ft_dlstadd_back(&stack->end, new);
+	return (0);
 }
