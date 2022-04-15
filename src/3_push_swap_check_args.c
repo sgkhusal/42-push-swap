@@ -6,29 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:38:47 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 19:38:48 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:15:32 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ps_check_order(t_stack *stack)
-{
-	t_dlist	*aux1;
-	t_dlist	*aux2;
-
-	aux1 = stack->init;
-	aux2 = aux1->next;
-	while (aux2 != NULL)
-	{
-		if (aux1->nb > aux2->nb)
-			return ;
-		aux1 = aux2;
-		aux2 = aux2->next;
-	}
-	clean_stack(stack);
-	exit(EXIT_SUCCESS);
-}
 
 void	ps_check_repeated_nb(t_stack *stack)
 {
@@ -70,4 +52,13 @@ int	ps_check_char(char *nb)
 		j++;
 	}
 	return (OK);
+}
+
+void	ps_check_input_order(t_stack *stack)
+{
+	if (ps_check_order(stack->init) == ORDER)
+	{
+		clean_stack(stack);
+		exit(EXIT_SUCCESS);
+	}
 }

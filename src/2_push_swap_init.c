@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/14 21:52:48 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:14:10 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 	}
 	stack->end = aux;
 	ps_check_repeated_nb(stack);
-	ps_check_order(stack);
+	ps_check_input_order(stack);
 }
 
 t_stack	*ps_init_stack_a(int stack_size, char *numbers[])

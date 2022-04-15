@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/15 02:21:47 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:15:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,21 @@ int	ps_smaller(t_stack *stack)
 		aux = aux->next;
 	}
 	return (small);
+}
+
+int	ps_check_order(t_dlist *lst)
+{
+	t_dlist	*aux1;
+	t_dlist	*aux2;
+
+	aux1 = lst;
+	aux2 = aux1->next;
+	while (aux2)
+	{
+		if (aux1->nb > aux2->nb)
+			return (NOT_ORDER);
+		aux1 = aux2;
+		aux2 = aux2->next;
+	}
+	return (ORDER);
 }
