@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 21:44:15 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/13 19:47:29 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/15 02:17:34 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,88 +18,9 @@ PURPLE="\033[1;35m"
 BLUE="\033[0;36m"
 END="\033[0m"
 
+./errors.sh
+
 cd ..
-make
-
-printf "\n"
-printf "$YELLOW"
-echo "****************** Error tests ******************"
-
-printf "\n"
-printf "$PURPLE"
-echo "Test 1: invalid arguments"
-printf "$GREY"
-
-printf "\n"
-echo "./push_swap Hello"
-./push_swap Hello
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 + 0 9 8"
-./push_swap 10 1 2 3 5 + 0 9 8
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 - 0 9 8"
-./push_swap 10 1 2 3 5 - 0 9 8
-
-printf "\n"
-echo "./push_swap 10 b 2 3 5 1 0 9 8"
-./push_swap 10 b 2 3 5 1 0 9 8
-
-printf "\n"
-echo "./push_swap 10 2 3 Hello 1 0 9 8"
-./push_swap 10 2 3 Hello 1 0 9 8
-
-printf "\n"
-echo "./push_swap 10 4 \* 3 5 1 0 9 8"
-./push_swap 10 4 \* 3 5 1 0 9 8
-
-printf "\n"
-echo "./push_swap 10 4 * 3 5 1 0 9 8"
-./push_swap 10 4 * 3 5 1 0 9 8
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 0 +++7 9 8"
-./push_swap 10 1 2 3 5 0 +++7 9 8
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 ---7 9 8"
-./push_swap 10 1 2 3 5 ---7 9 8
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 +-+7 9 8"
-./push_swap 10 1 2 3 5 +-+7 9 8
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 -100+83 9 8"
-./push_swap 10 1 2 3 5 -100+83 9 8
-
-printf "\n"
-printf "$PURPLE"
-echo "Test 2: repeated number"
-printf "$GREY"
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 0 1 9 8"
-./push_swap 10 1 2 3 5 0 1 9 8
-
-printf "\n"
-printf "$PURPLE"
-echo "Test 3: number bigger than an integer"
-printf "$GREY"
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 0 9 2147483648 8"
-./push_swap 10 1 2 3 5 0 9 2147483648 8
-
-printf "\n"
-printf "$PURPLE"
-echo "Test 4: number smaller than an integer"
-printf "$GREY"
-
-printf "\n"
-echo "./push_swap 10 1 2 3 5 0 9 -2147483649 8"
-./push_swap 10 1 2 3 5 0 9 -2147483649 8
 
 ###############################################################################
 printf "\n"
@@ -156,8 +77,28 @@ echo "Test 9: 3 numbers"
 printf "$GREY"
 
 printf "\n"
+echo "./push_swap 1 2 3"
+./push_swap 1 2 3
+
+printf "\n"
+echo "./push_swap 1 3 2"
+./push_swap 1 3 2
+
+printf "\n"
 echo "./push_swap 2 1 3"
 ./push_swap 2 1 3
+
+printf "\n"
+echo "./push_swap 2 3 1"
+./push_swap 2 3 1
+
+printf "\n"
+echo "./push_swap 3 1 2"
+./push_swap 3 1 2
+
+printf "\n"
+echo "./push_swap 3 2 1"
+./push_swap 3 2 1
 
 printf "\n"
 printf "$PURPLE"

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/13 22:49:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/15 01:55:28 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # define OK 0
 # define E_MALLOC 2
 # define E_NOT_INT 3
+
+# define STACK_A 'a'
+# define STACK_B 'b'
+# define STACK_A_B 'c'
 
 typedef struct s_dlist
 {
@@ -40,6 +44,8 @@ typedef struct s_push_swap
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		stack_size;
+	int		bigger;
+	int		smaller;
 }			t_push_swap;
 
 t_stack	*init_stack();
@@ -48,10 +54,16 @@ int		ps_check_char(char *nb);
 void	ps_check_repeated_nb(t_stack *stack);
 void	ps_check_order(t_stack *stack);
 
-void	push(t_stack *src, t_stack *dst);
-void	swap(t_dlist **lst);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
+void	push(t_stack *src, t_stack *dst, char s);
+void	swap(t_dlist **lst, char s);
+void	rotate(t_stack *stack, char s);
+void	reverse_rotate(t_stack *stack, char s);
+
+int		ps_bigger(t_stack *stack);
+int		ps_smaller(t_stack *stack);
+
+void	ps_order_2(t_stack *stack);
+void	ps_order_3(t_push_swap *data);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);
