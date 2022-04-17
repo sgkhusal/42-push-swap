@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 21:44:15 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/15 02:17:34 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/17 18:40:59 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,40 @@ printf "\n"
 echo "Total movements:"
 printf "$GREY"
 ./push_swap 50 21 25 9 | wc -l
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 10.3: 4 numbers"
+printf "\n"
+printf "$BLUE"
+echo "Movements result:"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 2 1 4 3"
+./push_swap 2 1 4 3
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 2 1 4 3 | wc -l
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 10.4: 4 numbers"
+printf "\n"
+printf "$BLUE"
+echo "Movements result:"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 3 2 4 1"
+./push_swap 3 2 4 1
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 3 2 4 1 | wc -l
 
 printf "\n"
 printf "$PURPLE"

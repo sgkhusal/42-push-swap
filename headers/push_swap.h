@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/17 02:41:18 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/17 19:11:03 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	push(t_stack *src, t_stack *dst, char s);
 void	swap(t_dlist *lst, char s);
 void	rotate(t_stack *stack, char s);
 void	reverse_rotate(t_stack *stack, char s);
+void	double_swap(t_dlist *lst_a, t_dlist *lst_b);
+void	double_rotate(t_stack *stack_a, t_stack *stack_b);
+void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 
 int		ps_check_order(t_dlist *lst);
 int		ps_bigger(t_stack *stack);
@@ -73,6 +76,7 @@ void	ps_order_4(t_push_swap *data);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);
+void	ps_close(t_push_swap *data);
 
 t_dlist	*ft_dlstnew(int nb);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
