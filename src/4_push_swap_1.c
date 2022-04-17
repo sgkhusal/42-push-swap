@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/17 19:07:41 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/18 01:49:36 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,25 @@ void	ps_one_mov(t_push_swap *data)
 		reverse_rotate(data->stack_a, STACK_A);
 }
 
+void	ps_order_4_special_case(t_push_swap *data, t_stack *stack, char s)
+{
+	if (stack->init->next->nb == data->bigger)
+	{
+		if ((stack->end->prev->nb == data->smaller))
+		{
+			if (stack->init->nb > stack->end->nb)
+			{
+				reverse_rotate(stack, s);
+				reverse_rotate(stack, s);
+			}
+		}
+	}
+}
+
 void	ps_order_4(t_push_swap *data)
 {
 	ps_one_mov(data);
+	ps_order_4_special_case(data, data->stack_a, STACK_A);
 	if (data->stack_a->init->nb != data->bigger)
 	{
 		if (data->stack_a->init->next->nb < data->stack_a->init->nb)
