@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/15 02:23:50 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/17 02:38:41 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_main.c 2_push_swap_init.c 3_push_swap_check_args.c \
 					4_push_swap_1.c \
-					push_swap_mov.c push_swap_utils_1.c push_swap_utils_2.c \
+					push_swap_mov_1.c push_swap_mov_2.c \
+					push_swap_utils_1.c push_swap_utils_2.c \
 					clean.c \
 					tests.c tests_mov.c
 #SRC_BONUS_FILES =	

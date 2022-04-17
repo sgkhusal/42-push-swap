@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 21:05:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/15 01:53:03 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/17 02:09:46 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	test_swap(t_stack *stack)
 	ft_printf("\nTesting swap:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
-	swap(&stack->init, STACK_A);
+	swap(stack->init, STACK_A);
 	ft_printf("Final stack:\n");
 	print_stack(stack);
 	print_reverse_stack(stack);

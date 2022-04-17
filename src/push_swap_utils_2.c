@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 int	ps_bigger(t_stack *stack)
 {
 	t_dlist	*aux;

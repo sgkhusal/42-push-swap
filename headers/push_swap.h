@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/15 18:16:20 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/17 02:41:18 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_push_swap
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		stack_size;
+	int		stack_b_size;
 	int		bigger;
 	int		smaller;
 }			t_push_swap;
@@ -58,16 +59,17 @@ void	ps_check_repeated_nb(t_stack *stack);
 void	ps_check_input_order(t_stack *stack);
 
 void	push(t_stack *src, t_stack *dst, char s);
-void	swap(t_dlist **lst, char s);
+void	swap(t_dlist *lst, char s);
 void	rotate(t_stack *stack, char s);
 void	reverse_rotate(t_stack *stack, char s);
 
 int		ps_check_order(t_dlist *lst);
 int		ps_bigger(t_stack *stack);
 int		ps_smaller(t_stack *stack);
+void	ft_swap(int *a, int *b);
 
-void	ps_order_2(t_stack *stack);
 void	ps_order_3(t_push_swap *data);
+void	ps_order_4(t_push_swap *data);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);
