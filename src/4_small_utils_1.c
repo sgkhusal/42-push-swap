@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/18 20:00:50 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:21:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ int	ps_small_part1(t_push_swap *data)
 {
 	if (data->stack_a->end->nb == data->stack_a->smaller)
 		reverse_rotate(data->stack_a, STACK_A);
-	ps_small_swap(data);
+	if (data->stack_a->init->nb != data->stack_a->bigger)
+	{
+		if (data->stack_a->init->next->nb < data->stack_a->init->nb)
+			swap(data->stack_a->init, STACK_A);
+		else if (data->stack_a->init->next->nb == data->stack_a->bigger)
+			swap(data->stack_a->init, STACK_A);
+	}
 	if (ps_check_order(data->stack_a->init) == ORDER)
 		return (ORDER);
 	push(data->stack_a, data->stack_b, STACK_B);
@@ -72,7 +78,10 @@ int	ps_small_part1(t_push_swap *data)
 	{
 		data->stack_b->smaller = ps_smaller(data->stack_b);
 		if (data->stack_b->init->nb == data->stack_b->smaller)
-			rotate(data->stack_b, STACK_B);
+		{
+			if (data->stack_b->init->nb < data->stack_a->bigger)
+				rotate(data->stack_b, STACK_B);
+		}
 	}
 	return (NOT_ORDER);
 }
