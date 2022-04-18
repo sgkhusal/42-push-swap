@@ -6,55 +6,23 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/18 22:21:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 00:20:16 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_small_swap2(t_push_swap *data)
+int	ps_one_mov(t_push_swap *data)
 {
-	if (data->stack_a->init->next->nb < data->stack_a->init->nb)
+	if (data->stack_a->init->nb == data->stack_a->bigger)
 	{
-		if (data->stack_b->size > 1)
+		if (ps_check_order(data->stack_a->init->next) == ORDER)
 		{
-			if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-				double_swap(data->stack_a->init, data->stack_b->init);
-			else
-				swap(data->stack_a->init, STACK_A);
-		}
-		else
-			swap(data->stack_a->init, STACK_A);
-	}
-	else if (data->stack_b->size > 1)
-	{
-		if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-			swap(data->stack_b->init, STACK_B);
-	}
-}
-
-void	ps_small_swap(t_push_swap *data)
-{
-	if (data->stack_a->init->nb != data->stack_a->bigger)
-	{
-		if (data->stack_a->init->next->nb < data->stack_a->init->nb)
-		{
-			if (data->stack_b->size > 1)
-			{
-				if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-					double_swap(data->stack_a->init, data->stack_b->init);
-				else
-					swap(data->stack_a->init, STACK_A);
-			}
-			else
-				swap(data->stack_a->init, STACK_A);
+			rotate(data->stack_a, STACK_A);
+			return (ORDER);
 		}
 	}
-	else if (data->stack_b->size > 1)
-	{
-		if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-			swap(data->stack_b->init, STACK_B);
-	}
+	return (NOT_ORDER);
 }
 
 int	ps_small_part1(t_push_swap *data)
@@ -63,9 +31,8 @@ int	ps_small_part1(t_push_swap *data)
 		reverse_rotate(data->stack_a, STACK_A);
 	if (data->stack_a->init->nb != data->stack_a->bigger)
 	{
-		if (data->stack_a->init->next->nb < data->stack_a->init->nb)
-			swap(data->stack_a->init, STACK_A);
-		else if (data->stack_a->init->next->nb == data->stack_a->bigger)
+		if (data->stack_a->init->next->nb < data->stack_a->init->nb || \
+		data->stack_a->init->next->nb == data->stack_a->bigger)
 			swap(data->stack_a->init, STACK_A);
 	}
 	if (ps_check_order(data->stack_a->init) == ORDER)
@@ -88,7 +55,6 @@ int	ps_small_part1(t_push_swap *data)
 
 int	ps_small_part2(t_push_swap *data)
 {
-	//ps_small_swap2(data);
 	push(data->stack_b, data->stack_a, STACK_A);
 	data->stack_b->size--;
 	data->stack_a->smaller = ps_smaller(data->stack_a);
@@ -105,15 +71,48 @@ int	ps_small_part2(t_push_swap *data)
 		return (NOT_ORDER);
 }
 
-int	ps_one_mov(t_push_swap *data)
+/* void	ps_check_swap(t_push_swap *data)
 {
-	if (data->stack_a->init->nb == data->stack_a->bigger)
+	if (data->stack_a->init->next->nb < data->stack_a->init->nb)
 	{
-		if (ps_check_order(data->stack_a->init->next) == ORDER)
+		if (data->stack_b->size > 1)
 		{
-			rotate(data->stack_a, STACK_A);
-			return (ORDER);
+			if (data->stack_b->init->next->nb > data->stack_b->init->nb)
+				double_swap(data->stack_a->init, data->stack_b->init);
+			else
+				swap(data->stack_a->init, STACK_A);
+		}
+		else
+			swap(data->stack_a->init, STACK_A);
+	}
+	else if (data->stack_b->size > 1)
+	{
+		if (data->stack_b->init->next->nb > data->stack_b->init->nb)
+			swap(data->stack_b->init, STACK_B);
+	}
+}
+
+void	ps_check_swap_small(t_push_swap *data)
+{
+	if (data->stack_a->init->nb != data->stack_a->bigger)
+	{
+		if (data->stack_a->init->next->nb < data->stack_a->init->nb || \
+		data->stack_a->init->next->nb == data->stack_a->bigger)
+		{
+			if (data->stack_b->size > 1)
+			{
+				if (data->stack_b->init->next->nb > data->stack_b->init->nb)
+					double_swap(data->stack_a->init, data->stack_b->init);
+				else
+					swap(data->stack_a->init, STACK_A);
+			}
+			else
+				swap(data->stack_a->init, STACK_A);
 		}
 	}
-	return (NOT_ORDER);
-}
+	else if (data->stack_b->size > 1)
+	{
+		if (data->stack_b->init->next->nb > data->stack_b->init->nb)
+			swap(data->stack_b->init, STACK_B);
+	}
+} */
