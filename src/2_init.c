@@ -53,6 +53,7 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 	else
 	{
 		stack = init_stack();
+		stack->size = stack_size;
 		if (stack == NULL)
 			ps_error(NULL);
 		nb = ft_atol(numbers[0]);
