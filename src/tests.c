@@ -43,13 +43,12 @@ void	tests(t_push_swap	*data)
 	ft_printf("Initial stack a:\n");
 	print_stack(data->stack_a);
 	print_reverse_stack(data->stack_a);
-	test_push(data->stack_a, data->stack_b, STACK_B);
-	test_push(data->stack_a, data->stack_b, STACK_B);
-	test_push(data->stack_b, data->stack_a, STACK_A);
 }
 
 	/* test_swap(data->stack_a);
 	test_rotate(data->stack_a);
 	test_reverse_rotate(data->stack_a);
-	
+	test_push(data->stack_a, data->stack_b, STACK_B);
+	test_push(data->stack_a, data->stack_b, STACK_B);
+	test_push(data->stack_b, data->stack_a, STACK_A);
 	test_push(data->stack_b, data->stack_a, STACK_A); */

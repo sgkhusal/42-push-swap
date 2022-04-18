@@ -187,7 +187,58 @@ printf "$GREY"
 
 printf "\n"
 printf "$PURPLE"
-echo "Test 11: 8 numbers"
+echo "Test 12: 6 numbers"
+printf "\n"
+printf "$BLUE"
+echo "Movements result:"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 8 20 12 32 42 10"
+./push_swap 8 20 12 32 42 10
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 8 20 12 32 42 10 | wc -l
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 13.1: 7 numbers"
+printf "\n"
+printf "$BLUE"
+echo "Movements result:"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 8 20 12 32 42 10 25"
+./push_swap 8 20 12 32 42 10 25
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 8 20 12 32 42 10 25 | wc -l
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 13.2: 7 numbers"
+printf "\n"
+printf "$BLUE"
+echo "Movements result:"
+printf "$GREY"
+
+printf "\n"
+echo "./push_swap 8 20 12 25 42 10 32"
+./push_swap 8 20 12 25 42 10 32
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 8 20 12 25 42 10 32 | wc -l
+
+printf "\n"
+printf "$PURPLE"
+echo "Test 14: 8 numbers"
 printf "\n"
 printf "$BLUE"
 echo "Movements result:"
@@ -204,12 +255,17 @@ printf "$GREY"
 
 printf "\n"
 printf "$PURPLE"
-echo "Test 12: 000000"
+echo "Test 15: 000000"
 printf "$GREY"
 
 printf "\n"
 echo "./push_swap 10 1 2 3 5 000000 9 8"
 ./push_swap 10 1 2 3 5 000000 9 8
+printf "$BLUE"
+printf "\n"
+echo "Total movements:"
+printf "$GREY"
+./push_swap 10 1 2 3 5 000000 9 8 | wc -l
 
 printf "\n"
 printf "$END"

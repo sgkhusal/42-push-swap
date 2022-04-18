@@ -69,3 +69,20 @@ int	ps_check_order(t_dlist *lst)
 	}
 	return (ORDER);
 }
+
+int	ps_check_reverse_order(t_dlist *lst)
+{
+	t_dlist	*aux1;
+	t_dlist	*aux2;
+
+	aux1 = lst;
+	aux2 = aux1->next;
+	while (aux2)
+	{
+		if (aux1->nb < aux2->nb)
+			return (NOT_ORDER);
+		aux1 = aux2;
+		aux2 = aux2->next;
+	}
+	return (ORDER);
+}
