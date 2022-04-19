@@ -26,6 +26,10 @@ int	stack_max(t_stack *stack)
 	t_dlist	*aux;
 	int		big;
 
+	if (stack->size == 0)
+		return (0);
+	else if (stack->size == 1)
+		return (stack->top->nb);
 	big = stack->top->nb;
 	aux = stack->top->next;
 	while (aux)
@@ -42,6 +46,10 @@ int	stack_min(t_stack *stack)
 	t_dlist	*aux;
 	int		small;
 
+	if (stack->size == 0)
+		return (0);
+	else if (stack->size == 1)
+		return (stack->top->nb);
 	small = stack->top->nb;
 	aux = stack->top->next;
 	while (aux)
