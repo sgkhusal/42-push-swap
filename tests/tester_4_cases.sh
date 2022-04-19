@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    tester_n_cases.sh                                  :+:      :+:    :+:    #
+#    tester_4_cases.sh                                  :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 20:17:58 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/19 22:53:44 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/19 23:01:21 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,42 +17,35 @@ GREY="\033[38;5;244m"
 PURPLE="\033[1;35m"
 BLUE="\033[0;36m"
 END="\033[0m"
-QTY_TESTS=10 # change the total of tests
-n=5 # change the stack size
 
 cd .. # change path to push_swap
 
-rm log$n
+rm log4
 
 printf "\n"
 printf "$YELLOW"
 echo "****************** PUSH SWAP TESTER ******************"
-echo "******************* stack size = $n *******************"
+echo "******************* stack size = 4 *******************"
 
 i=1
 SUM=0
 RET=0
-while [ $i -le $QTY_TESTS ]
+
+cat tests/4_cases | while read case4
 do
-	seq 1 $n | shuf | tr '\n' ' ' > numbers
-	printf "$PURPLE\nTest $i: "
-	printf "\nTest $i: " >> log$n
-	printf "$GREY"
-	cat numbers
-	cat numbers >> log$n
-	cat numbers | xargs ./push_swap > result
-	#cat result
-	printf "$BLUE\nTotal moves = " 
-	printf "\nTotal moves = " >> log$n
-	cat result | wc -l
+	printf "$PURPLE\nTest $i:$GREY $case4"
+	printf "\nTest $i: $case4" >> log4
+	./push_swap $case4 > result
+	cat result
 	RET=`cat result | wc -l | bc`
-	cat result | wc -l >> log$n
+	printf "$BLUE\nTotal moves = $RET\n" 
+	printf "\nTotal moves = $RET\n" >> log4
 	i=$(($i + 1))
 	SUM=$(($SUM + $RET))
 done
 
-printf "\nMedia = %.1f" "$(($SUM / $QTY_TESTS))"
-printf "\nMedia = %.1f" "$(($SUM / $QTY_TESTS))" >> log$n
+printf "\nMedia = %.1f" "$(($SUM / $i))"
+printf "\nMedia = %.1f" "$(($SUM / $i))" >> log4
 printf "\n$END"
 
-rm numbers result
+rm result
