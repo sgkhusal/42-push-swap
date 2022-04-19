@@ -6,13 +6,13 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 00:20:16 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 02:29:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_one_mov(t_push_swap *data)
+int	ps_bigger_first(t_push_swap *data)
 {
 	if (data->stack_a->init->nb == data->stack_a->bigger)
 	{

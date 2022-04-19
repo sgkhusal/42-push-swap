@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 01:59:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/18 19:29:56 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 02:52:06 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ps_order_6(t_push_swap *data)
 {
-	ps_one_mov(data);
+	ps_bigger_first(data);
 	if (ps_small_part1(data) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(data) == ORDER)
@@ -51,7 +51,7 @@ int	ps_order_6(t_push_swap *data)
 
 int	ps_order_7(t_push_swap *data)
 {
-	ps_one_mov(data);
+	ps_bigger_first(data);
 	if (ps_small_part1(data) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(data) == ORDER)
@@ -85,7 +85,7 @@ int	ps_order_7(t_push_swap *data)
 
 int	ps_order_8(t_push_swap *data)
 {
-	ps_one_mov(data);
+	ps_bigger_first(data);
 	if (ps_small_part1(data) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(data) == ORDER)
@@ -131,7 +131,7 @@ int	ps_order_8(t_push_swap *data)
 
 int	ps_order_9(t_push_swap *data)
 {
-	ps_one_mov(data);
+	ps_bigger_first(data);
 	if (ps_small_part1(data) == ORDER)
 		return (ORDER);
 	ps_order_8(data);
@@ -143,7 +143,7 @@ int	ps_order_9(t_push_swap *data)
 
 int	ps_order_10(t_push_swap *data)
 {
-	ps_one_mov(data);
+	ps_bigger_first(data);
 	if (ps_small_part1(data) == ORDER)
 		return (ORDER);
 	ps_order_9(data);
