@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 04:31:02 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 05:36:43 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	ps_small_part1(t_stack *a, t_stack *b)
 		reverse_rotate(a, STACK_A);
 	if (a->top->nb != a->max)
 	{
-		if (a->top->next->nb < a->top->nb || \
-		a->top->next->nb == a->max)
+		if (a->top->next->nb < a->top->nb || a->top->next->nb == a->max)
 			swap(a->top, STACK_A);
 	}
 	if (ps_check_order(a->top) == ORDER)
