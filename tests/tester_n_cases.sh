@@ -20,7 +20,7 @@ END="\033[0m"
 QTY_TESTS=100 # change the total of tests
 n=5 # change the stack size
 
-cd ..
+cd .. # change path to push_swap
 
 rm log$n
 
