@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 02:53:04 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 04:38:13 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,16 @@ void	ft_swap(int *a, int *b);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_order_3_reverse(t_stack *stack, char s);
-int		ps_bigger_first(t_push_swap *data);
-int		ps_small_part1(t_push_swap *data);
-int		ps_small_part2(t_push_swap *data);
-int		ps_order_4(t_push_swap *data);
-int		ps_order_5(t_push_swap *data);
-int		ps_order_6(t_push_swap *data);
-int		ps_order_7(t_push_swap *data);
-int		ps_order_8(t_push_swap *data);
-int		ps_order_9(t_push_swap *data);
-int		ps_order_10(t_push_swap *data);
+int		ps_bigger_first(t_stack *a);
+int		ps_small_part1(t_stack *a, t_stack *b);
+int		ps_small_part2(t_stack *a, t_stack *b);
+int		ps_order_4(t_stack *a, t_stack *b);
+int		ps_order_5(t_stack *a, t_stack *b);
+int		ps_order_6(t_stack *a, t_stack *b);
+int		ps_order_7(t_stack *a, t_stack *b);
+int		ps_order_8(t_stack *a, t_stack *b);
+int		ps_order_9(t_stack *a, t_stack *b);
+int		ps_order_10(t_stack *a, t_stack *b);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);

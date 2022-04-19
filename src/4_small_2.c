@@ -12,143 +12,143 @@
 
 #include "push_swap.h"
 
-int	ps_order_6(t_push_swap *data)
+int	ps_order_6(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(data);
-	if (ps_small_part1(data) == ORDER)
+	ps_bigger_first(a);
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
-		if (ps_check_order(data->stack_a->init) == ORDER)
+		push(b, a, STACK_A);
+		if (ps_check_order(a->init) == ORDER)
 			return (ORDER);
 		else
-			return (ps_order_6(data)); // acho que pode entrar em loop
+			return (ps_order_6(a, b)); // acho que pode entrar em loop
 	}
-	if (ps_small_part1(data) == ORDER) // problemas aqui
+	if (ps_small_part1(a, b) == ORDER) // problemas aqui
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
-		push(data->stack_b, data->stack_a, STACK_A);
+		push(b, a, STACK_A);
+		push(b, a, STACK_A);
 	}
 	else
 	{
-		ps_order_3(data->stack_a, STACK_A);
-		data->stack_b->smaller = ps_smaller(data->stack_b);
-		data->stack_b->bigger = ps_bigger(data->stack_b);
-		ps_order_3_reverse(data->stack_b, STACK_B);
-		ps_small_part2(data);
-		ps_small_part2(data);
-		if (ps_small_part2(data) == ORDER) // será que tem problemas??
+		ps_order_3(a, STACK_A);
+		b->smaller = ps_smaller(b);
+		b->bigger = ps_bigger(b);
+		ps_order_3_reverse(b, STACK_B);
+		ps_small_part2(a, b);
+		ps_small_part2(a, b);
+		if (ps_small_part2(a, b) == ORDER) // será que tem problemas??
 			return (ORDER);
 		else
-			return (ps_order_6(data));
+			return (ps_order_6(a, b));
 	}
-	if (ps_check_order(data->stack_a->init) == ORDER)
+	if (ps_check_order(a->init) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_6(data));
+		return (ps_order_6(a, b));
 }
 
-int	ps_order_7(t_push_swap *data)
+int	ps_order_7(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(data);
-	if (ps_small_part1(data) == ORDER)
+	ps_bigger_first(a);
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
+		push(b, a, STACK_A);
 		return (ORDER);
 	}
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
-		push(data->stack_b, data->stack_a, STACK_A);
+		push(b, a, STACK_A);
+		push(b, a, STACK_A);
 	}
 	else
 	{
-		ps_order_4(data);
-		data->stack_b->smaller = ps_smaller(data->stack_b);
-		data->stack_b->bigger = ps_bigger(data->stack_b);
-		ps_order_3_reverse(data->stack_b, STACK_B);
-		ps_small_part2(data);
-		ps_small_part2(data);
-		if (ps_small_part2(data) == ORDER)
+		ps_order_4(a, b);
+		b->smaller = ps_smaller(b);
+		b->bigger = ps_bigger(b);
+		ps_order_3_reverse(b, STACK_B);
+		ps_small_part2(a, b);
+		ps_small_part2(a, b);
+		if (ps_small_part2(a, b) == ORDER)
 			return (ORDER);
 		else
-			return (ps_order_7(data));
+			return (ps_order_7(a, b));
 	}
-	if (ps_check_order(data->stack_a->init) == ORDER)
+	if (ps_check_order(a->init) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_7(data));
+		return (ps_order_7(a, b));
 }
 
-int	ps_order_8(t_push_swap *data)
+int	ps_order_8(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(data);
-	if (ps_small_part1(data) == ORDER)
+	ps_bigger_first(a);
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
+		push(b, a, STACK_A);
 		return (ORDER);
 	}
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 	{
-		push(data->stack_b, data->stack_a, STACK_A);
-		push(data->stack_b, data->stack_a, STACK_A);
+		push(b, a, STACK_A);
+		push(b, a, STACK_A);
 	}
 	else
 	{
-		data->stack_b->smaller = ps_smaller(data->stack_b);
-		data->stack_b->bigger = ps_bigger(data->stack_b);
-		ps_order_3_reverse(data->stack_b, STACK_B);
-		if (ps_small_part1(data) == ORDER)
+		b->smaller = ps_smaller(b);
+		b->bigger = ps_bigger(b);
+		ps_order_3_reverse(b, STACK_B);
+		if (ps_small_part1(a, b) == ORDER)
 		{
-			push(data->stack_b, data->stack_a, STACK_A);
-			push(data->stack_b, data->stack_a, STACK_A);
-			push(data->stack_b, data->stack_a, STACK_A);
+			push(b, a, STACK_A);
+			push(b, a, STACK_A);
+			push(b, a, STACK_A);
 		}
 		else
 		{
-			ps_order_4(data);
-			data->stack_b->smaller = ps_smaller(data->stack_b);
-			data->stack_b->bigger = ps_bigger(data->stack_b);
-			ps_small_part2(data);
-			ps_small_part2(data);
-			ps_small_part2(data);
-			if (ps_small_part2(data) == ORDER)
+			ps_order_4(a, b);
+			b->smaller = ps_smaller(b);
+			b->bigger = ps_bigger(b);
+			ps_small_part2(a, b);
+			ps_small_part2(a, b);
+			ps_small_part2(a, b);
+			if (ps_small_part2(a, b) == ORDER)
 				return (ORDER);
 			else
-				return (ps_order_8(data));
+				return (ps_order_8(a, b));
 		}
 	}
-	if (ps_check_order(data->stack_a->init) == ORDER)
+	if (ps_check_order(a->init) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_8(data));
+		return (ps_order_8(a, b));
 }
 
-int	ps_order_9(t_push_swap *data)
+int	ps_order_9(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(data);
-	if (ps_small_part1(data) == ORDER)
+	ps_bigger_first(a);
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	ps_order_8(data);
-	if (ps_small_part2(data) == ORDER)
+	ps_order_8(a, b);
+	if (ps_small_part2(a, b) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_9(data));
+		return (ps_order_9(a, b));
 }
 
-int	ps_order_10(t_push_swap *data)
+int	ps_order_10(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(data);
-	if (ps_small_part1(data) == ORDER)
+	ps_bigger_first(a);
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	ps_order_9(data);
-	if (ps_small_part2(data) == ORDER)
+	ps_order_9(a, b);
+	if (ps_small_part2(a, b) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_10(data));
+		return (ps_order_10(a, b));
 }

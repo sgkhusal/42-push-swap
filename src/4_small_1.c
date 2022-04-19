@@ -6,23 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 02:35:18 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 04:38:58 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ps_small(t_push_swap *data)
-{
-	if (ps_bigger_first(data) == ORDER)
-		return (ORDER);
-	if (ps_check_order(data->stack_a->init) == ORDER)
-		return (ORDER);
-	if (data->stack_a->size == 4)
-		ps_order_4_special_case(data->stack_a, STACK_A);
-	if (data->stack_a->end->nb == data->stack_a->smaller)
-		reverse_rotate(data->stack_a, STACK_A);
-}
 
 void	ps_order_3(t_stack *stack, char s)
 {
@@ -66,30 +54,30 @@ static int	ps_order_4_special_case(t_stack *stack, char s)
 	return (NOT_ORDER);
 }
 
-int	ps_order_4(t_push_swap *data)
+int	ps_order_4(t_stack *a, t_stack *b)
 {
-	if (ps_bigger_first(data) == ORDER)
+	if (ps_bigger_first(a) == ORDER)
 		return (ORDER);
-	if (ps_order_4_special_case(data->stack_a, STACK_A) == ORDER)
+	if (ps_order_4_special_case(a, STACK_A) == ORDER)
 		return (ORDER);
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	ps_order_3(data->stack_a, STACK_A);
-	if (ps_small_part2(data) == ORDER)
+	ps_order_3(a, STACK_A);
+	if (ps_small_part2(a, b) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_4(data));
+		return (ps_order_4(a, b));
 }
 
-int	ps_order_5(t_push_swap *data)
+int	ps_order_5(t_stack *a, t_stack *b)
 {
-	if (ps_bigger_first(data) == ORDER)
+	if (ps_bigger_first(a) == ORDER)
 		return (ORDER);
-	if (ps_small_part1(data) == ORDER)
+	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
-	ps_order_4(data);
-	if (ps_small_part2(data) == ORDER)
+	ps_order_4(a, b);
+	if (ps_small_part2(a, b) == ORDER)
 		return (ORDER);
 	else
-		return (ps_order_5(data));
+		return (ps_order_5(a, b));
 }
