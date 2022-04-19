@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 04:38:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:37:00 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,15 @@ void	ps_order_3(t_stack *a, char s)
 	}
 }
 
-static int	ps_order_4_special_case(t_stack *a, char s)
+int	ps_order_4_special_case(t_stack *a, char s)
 {
-	if (a->top->next->nb == a->max)
+	if (a->top->next->nb == a->max && a->bottom->prev->nb == a->min && \
+	a->top->nb > a->bottom->nb)
 	{
-		if ((a->bottom->prev->nb == a->min))
-		{
-			if (a->top->nb > a->bottom->nb)
-			{
-				reverse_rotate(a, s);
-				reverse_rotate(a, s);
-				if (ps_check_order(a->top) == ORDER)
-					return (ORDER);
-			}
-		}
+		reverse_rotate(a, s);
+		reverse_rotate(a, s);
+		if (ps_check_order(a->top) == ORDER)
+			return (ORDER);
 	}
 	return (NOT_ORDER);
 }
