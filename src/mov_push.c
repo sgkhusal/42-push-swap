@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+static void	update_stack_data(t_stack *src, t_stack *dst)
+{
+	dst->size++;
+	src->size--;
+	src->min = stack_min(src);
+	src->max = stack_max(src);
+	dst->min = stack_min(dst);
+	dst->max = stack_max(dst);
+}
+
 static void	normal_push(t_stack *src, t_stack *dst)
 {
 	dst->top->prev = src->top;
@@ -21,6 +31,7 @@ static void	normal_push(t_stack *src, t_stack *dst)
 	dst->top->prev = NULL;
 	src->top->prev = NULL;
 }
+
 
 void	push(t_stack *src, t_stack *dst, char s)
 {
@@ -47,4 +58,5 @@ void	push(t_stack *src, t_stack *dst, char s)
 		ft_putstr_fd("pa\n", 1);
 	else if (s == STACK_B)
 		ft_putstr_fd("pb\n", 1);
+	update_stack_data(src, dst);
 }
