@@ -63,6 +63,8 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 		if (stack->top == NULL)
 			ps_error(stack);
 		ps_fill_stack_a(stack, stack_size, numbers);
+		stack->max = stack_max(stack);
+		stack->min = stack_min(stack);
 	}
 	return (stack);
 }

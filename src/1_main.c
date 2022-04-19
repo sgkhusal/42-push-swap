@@ -43,15 +43,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	data.stack_a = ps_init_stack_a(argc - 1, &argv[1]);
 	data.stack_b = init_stack();
-	data.stack_b->size = 0;
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	//print_stack(data.stack_a);
-	if (data.stack_a->size > 2)
-	{
-		data.stack_a->max = stack_max(data.stack_a);
-		data.stack_a->min = stack_min(data.stack_a);
-	}
 	push_swap(data.stack_a, data.stack_b);
 	//ft_printf("Final stack:\n");
 	//print_stack(data.stack_a);
