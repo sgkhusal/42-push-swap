@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/18 02:20:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/19 02:53:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_swap(int *a, int *b);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_order_3_reverse(t_stack *stack, char s);
-int		ps_one_mov(t_push_swap *data);
+int		ps_bigger_first(t_push_swap *data);
 int		ps_small_part1(t_push_swap *data);
 int		ps_small_part2(t_push_swap *data);
 int		ps_order_4(t_push_swap *data);
