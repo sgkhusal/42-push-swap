@@ -76,5 +76,8 @@ t_stack	*init_stack(void)
 		return (NULL);
 	stack->top = NULL;
 	stack->bottom = NULL;
+	stack->size = 0;
+	stack->min = 0;
+	stack->max = 0;
 	return (stack);
 }
