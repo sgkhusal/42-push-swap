@@ -12,41 +12,41 @@
 
 #include "push_swap.h"
 
-void	ps_order_3(t_stack *stack, char s)
+void	ps_order_3(t_stack *a, char s)
 {
-	if (ps_check_order(stack->top) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return ;
-	if (stack->top->nb == stack->min)
+	if (a->top->nb == a->min)
 	{
-		reverse_rotate(stack, s);
-		swap(stack->top, s);
+		reverse_rotate(a, s);
+		swap(a->top, s);
 	}
-	else if (stack->top->nb == stack->max)
+	else if (a->top->nb == a->max)
 	{
-		rotate(stack, s);
-		if (stack->top->next->nb == stack->min)
-			swap(stack->top, s);
+		rotate(a, s);
+		if (a->top->next->nb == a->min)
+			swap(a->top, s);
 	}
 	else
 	{
-		if (stack->top->next->nb == stack->min)
-			swap(stack->top, s);
+		if (a->top->next->nb == a->min)
+			swap(a->top, s);
 		else
-			reverse_rotate(stack, s);
+			reverse_rotate(a, s);
 	}
 }
 
-static int	ps_order_4_special_case(t_stack *stack, char s)
+static int	ps_order_4_special_case(t_stack *a, char s)
 {
-	if (stack->top->next->nb == stack->max)
+	if (a->top->next->nb == a->max)
 	{
-		if ((stack->bottom->prev->nb == stack->min))
+		if ((a->bottom->prev->nb == a->min))
 		{
-			if (stack->top->nb > stack->bottom->nb)
+			if (a->top->nb > a->bottom->nb)
 			{
-				reverse_rotate(stack, s);
-				reverse_rotate(stack, s);
-				if (ps_check_order(stack->top) == ORDER)
+				reverse_rotate(a, s);
+				reverse_rotate(a, s);
+				if (ps_check_order(a->top) == ORDER)
 					return (ORDER);
 			}
 		}
