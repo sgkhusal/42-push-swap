@@ -16,7 +16,7 @@ void	print_stack(t_stack *stack)
 {
 	t_dlist	*tmp;
 
-	tmp = stack->init;
+	tmp = stack->top;
 	while (tmp != NULL)
 	{
 		ft_printf("%i ", tmp->nb);
@@ -29,7 +29,7 @@ void	print_reverse_stack(t_stack *stack)
 {
 	t_dlist	*tmp;
 
-	tmp = stack->end;
+	tmp = stack->bottom;
 	while (tmp != NULL)
 	{
 		ft_printf("%i ", tmp->nb);
@@ -40,7 +40,7 @@ void	print_reverse_stack(t_stack *stack)
 
 void	tests(t_push_swap	*data)
 {
-	ft_printf("Initial stack a:\n");
+	ft_printf("topial stack a:\n");
 	print_stack(data->stack_a);
 	print_reverse_stack(data->stack_a);
 }

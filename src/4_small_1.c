@@ -14,23 +14,23 @@
 
 void	ps_order_3(t_stack *stack, char s)
 {
-	if (ps_check_order(stack->init) == ORDER)
+	if (ps_check_order(stack->top) == ORDER)
 		return ;
-	if (stack->init->nb == stack->smaller)
+	if (stack->top->nb == stack->min)
 	{
 		reverse_rotate(stack, s);
-		swap(stack->init, s);
+		swap(stack->top, s);
 	}
-	else if (stack->init->nb == stack->bigger)
+	else if (stack->top->nb == stack->max)
 	{
 		rotate(stack, s);
-		if (stack->init->next->nb == stack->smaller)
-			swap(stack->init, s);
+		if (stack->top->next->nb == stack->min)
+			swap(stack->top, s);
 	}
 	else
 	{
-		if (stack->init->next->nb == stack->smaller)
-			swap(stack->init, s);
+		if (stack->top->next->nb == stack->min)
+			swap(stack->top, s);
 		else
 			reverse_rotate(stack, s);
 	}
@@ -38,15 +38,15 @@ void	ps_order_3(t_stack *stack, char s)
 
 static int	ps_order_4_special_case(t_stack *stack, char s)
 {
-	if (stack->init->next->nb == stack->bigger)
+	if (stack->top->next->nb == stack->max)
 	{
-		if ((stack->end->prev->nb == stack->smaller))
+		if ((stack->bottom->prev->nb == stack->min))
 		{
-			if (stack->init->nb > stack->end->nb)
+			if (stack->top->nb > stack->bottom->nb)
 			{
 				reverse_rotate(stack, s);
 				reverse_rotate(stack, s);
-				if (ps_check_order(stack->init) == ORDER)
+				if (ps_check_order(stack->top) == ORDER)
 					return (ORDER);
 			}
 		}
@@ -56,7 +56,7 @@ static int	ps_order_4_special_case(t_stack *stack, char s)
 
 int	ps_order_4(t_stack *a, t_stack *b)
 {
-	if (ps_bigger_first(a) == ORDER)
+	if (rotate_max_top(a) == ORDER)
 		return (ORDER);
 	if (ps_order_4_special_case(a, STACK_A) == ORDER)
 		return (ORDER);
@@ -71,7 +71,7 @@ int	ps_order_4(t_stack *a, t_stack *b)
 
 int	ps_order_5(t_stack *a, t_stack *b)
 {
-	if (ps_bigger_first(a) == ORDER)
+	if (rotate_max_top(a) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);

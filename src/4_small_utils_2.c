@@ -15,34 +15,34 @@
 
 void	ps_order_3_reverse(t_stack *stack, char s)
 {
-	if (stack->init->nb == stack->bigger)
+	if (stack->top->nb == stack->max)
 	{
-		if (stack->init->next->nb == stack->smaller)
+		if (stack->top->next->nb == stack->min)
 		{
-			swap(stack->init, s);
+			swap(stack->top, s);
 			rotate(stack, s);
 		}
 	}
-	else if (stack->init->nb == stack->smaller)
+	else if (stack->top->nb == stack->min)
 	{
 		rotate(stack, s);
-		if (stack->init->next->nb == stack->bigger)
-			swap(stack->init, s);
+		if (stack->top->next->nb == stack->max)
+			swap(stack->top, s);
 	}
 	else
 	{
-		if (stack->end->nb == stack->bigger)
+		if (stack->bottom->nb == stack->max)
 			reverse_rotate(stack, STACK_A);
-		else if (stack->init->next->nb == stack->bigger)
-			swap(stack->init, STACK_A);
+		else if (stack->top->next->nb == stack->max)
+			swap(stack->top, STACK_A);
 	}
 }
 
 /* int	ps_one_mov_reverse(t_push_swap *data)
 {
-	if (data->stack_a->init->nb == data->stack_a->bigger)
+	if (data->stack_a->top->nb == data->stack_a->max)
 	{
-		if (ps_check_reverse_order(data->stack_a->init->next) == ORDER)
+		if (ps_check_reverse_order(data->stack_a->top->next) == ORDER)
 		{
 			rotate(data->stack_a, STACK_A);
 			return (ORDER);

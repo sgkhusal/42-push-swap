@@ -17,7 +17,7 @@ void	test_swap(t_stack *stack)
 	ft_printf("\nTesting swap:\n");
 	ft_printf("Initial stack:\n");
 	print_stack(stack);
-	swap(stack->init, STACK_A);
+	swap(stack->top, STACK_A);
 	ft_printf("Final stack:\n");
 	print_stack(stack);
 	print_reverse_stack(stack);

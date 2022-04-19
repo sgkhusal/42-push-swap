@@ -16,9 +16,9 @@ void	clean_stack(t_stack *stack)
 {
 	if (stack == NULL)
 		return ;
-	ft_dlstdel(stack->init);
-	stack->init = NULL;
-	stack->end = NULL;
+	ft_dlstdel(stack->top);
+	stack->top = NULL;
+	stack->bottom = NULL;
 	free(stack);
 	stack = NULL;
 }

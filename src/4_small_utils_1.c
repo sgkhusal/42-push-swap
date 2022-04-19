@@ -39,11 +39,11 @@ int	ps_small_part1(t_stack *a, t_stack *b)
 		return (ORDER);
 	push(a, b, STACK_B);
 	b->size++;
-	a->min = ps_min(a);
-	a->max = ps_max(a);
+	a->min = stack_min(a);
+	a->max = stack_max(a);
 	if (b->size > 1)
 	{
-		b->min = ps_min(b);
+		b->min = stack_min(b);
 		if (b->top->nb == b->min)
 		{
 			if (b->top->nb < a->max)
@@ -57,8 +57,8 @@ int	ps_small_part2(t_stack *a, t_stack *b)
 {
 	push(b, a, STACK_A);
 	b->size--;
-	a->min = ps_min(a);
-	a->max = ps_max(a);
+	a->min = stack_min(a);
+	a->max = stack_max(a);
 	if (a->top->nb == a->min)
 		return (ORDER);
 	if (a->top->nb == a->max)
@@ -118,7 +118,7 @@ void	ps_check_swap_small(t_stack *a, t_stack *b)
 
 void	ps_small(t_stack *a, t_stack *b)
 {
-	if (ps_max_first(a) == ORDER)
+	if (rotate_max_top(a) == ORDER)
 		return ;
 	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
@@ -128,11 +128,11 @@ void	ps_small(t_stack *a, t_stack *b)
 	push(a, b, STACK_B);
 	b->size++;
 	a->size--;
-	a->min = ps_min(a);
-	a->max = ps_max(a);
+	a->min = stack_min(a);
+	a->max = stack_max(a);
 	if (b->size > 1) ///
 	{
-		b->min = ps_min(b);
+		b->min = stack_min(b);
 		if (b->top->nb == b->min)
 		{
 			if (b->top->nb < a->max)

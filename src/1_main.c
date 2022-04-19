@@ -16,7 +16,7 @@
 void	push_swap(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
-		swap(a->init, STACK_A);
+		swap(a->top, STACK_A);
 	else if (a->size == 3)
 		ps_order_3(a, STACK_A);
 	else if (a->size == 4)
@@ -49,14 +49,14 @@ int	main(int argc, char *argv[])
 	//print_stack(data.stack_a);
 	if (data.stack_a->size > 2)
 	{
-		data.stack_a->bigger = ps_bigger(data.stack_a);
-		data.stack_a->smaller = ps_smaller(data.stack_a);
+		data.stack_a->max = stack_max(data.stack_a);
+		data.stack_a->min = stack_min(data.stack_a);
 	}
 	push_swap(data.stack_a, data.stack_b);
 	//ft_printf("Final stack:\n");
 	//print_stack(data.stack_a);
 	//print_reverse_stack(data.stack_a);
-	/* if (ps_check_order(data.stack_a->init) == ORDER)
+	/* if (ps_check_order(data.stack_a->top) == ORDER)
 	{
 		ft_printf("\033[38;5;83m");
 		ft_printf("OK\n");

@@ -17,7 +17,7 @@ void	ps_check_repeated_nb(t_stack *stack)
 	t_dlist	*aux1;
 	t_dlist	*aux2;
 
-	aux1 = stack->init;
+	aux1 = stack->top;
 	while (aux1 != NULL)
 	{
 		aux2 = aux1->next;
@@ -56,7 +56,7 @@ int	ps_check_char(char *nb)
 
 void	ps_check_input_order(t_stack *stack)
 {
-	if (ps_check_order(stack->init) == ORDER)
+	if (ps_check_order(stack->top) == ORDER)
 	{
 		clean_stack(stack);
 		exit(EXIT_SUCCESS);
