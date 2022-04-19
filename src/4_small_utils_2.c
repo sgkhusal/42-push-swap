@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-# include "test.h" ///////////////////////////
 
 void	ps_order_3_reverse(t_stack *stack, char s)
 {

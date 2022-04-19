@@ -32,7 +32,6 @@ static void	normal_push(t_stack *src, t_stack *dst)
 	src->top->prev = NULL;
 }
 
-
 void	push(t_stack *src, t_stack *dst, char s)
 {
 	if (dst->top == NULL)
