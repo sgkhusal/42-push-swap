@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	ps_bigger_first(t_stack *a)
+int	rotate_max_top(t_stack *a)
 {
-	if (a->init->nb == a->bigger)
+	if (a->top->nb == a->max)
 	{
-		if (ps_check_order(a->init->next) == ORDER)
+		if (ps_check_order(a->top->next) == ORDER)
 		{
 			rotate(a, STACK_A);
 			return (ORDER);
@@ -27,26 +27,26 @@ int	ps_bigger_first(t_stack *a)
 
 int	ps_small_part1(t_stack *a, t_stack *b)
 {
-	if (a->end->nb == a->smaller)
+	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
-	if (a->init->nb != a->bigger)
+	if (a->top->nb != a->max)
 	{
-		if (a->init->next->nb < a->init->nb || \
-		a->init->next->nb == a->bigger)
-			swap(a->init, STACK_A);
+		if (a->top->next->nb < a->top->nb || \
+		a->top->next->nb == a->max)
+			swap(a->top, STACK_A);
 	}
-	if (ps_check_order(a->init) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return (ORDER);
 	push(a, b, STACK_B);
 	b->size++;
-	a->smaller = ps_smaller(a);
-	a->bigger = ps_bigger(a);
+	a->min = ps_min(a);
+	a->max = ps_max(a);
 	if (b->size > 1)
 	{
-		b->smaller = ps_smaller(b);
-		if (b->init->nb == b->smaller)
+		b->min = ps_min(b);
+		if (b->top->nb == b->min)
 		{
-			if (b->init->nb < a->bigger)
+			if (b->top->nb < a->max)
 				rotate(b, STACK_B);
 		}
 	}
@@ -57,15 +57,15 @@ int	ps_small_part2(t_stack *a, t_stack *b)
 {
 	push(b, a, STACK_A);
 	b->size--;
-	a->smaller = ps_smaller(a);
-	a->bigger = ps_bigger(a);
-	if (a->init->nb == a->smaller)
+	a->min = ps_min(a);
+	a->max = ps_max(a);
+	if (a->top->nb == a->min)
 		return (ORDER);
-	if (a->init->nb == a->bigger)
+	if (a->top->nb == a->max)
 		rotate(a, STACK_A);
-	if (a->init->next->nb < a->init->nb)
-		swap(a->init, STACK_A);
-	if (ps_check_order(a->init) == ORDER)
+	if (a->top->next->nb < a->top->nb)
+		swap(a->top, STACK_A);
+	if (ps_check_order(a->top) == ORDER)
 		return (ORDER);
 	else
 		return (NOT_ORDER);
@@ -73,69 +73,69 @@ int	ps_small_part2(t_stack *a, t_stack *b)
 
 /* void	ps_check_swap(t_push_swap *data)
 {
-	if (data->stack_a->init->next->nb < data->stack_a->init->nb)
+	if (data->stack_a->top->next->nb < data->stack_a->top->nb)
 	{
 		if (data->stack_b->size > 1)
 		{
-			if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-				double_swap(data->stack_a->init, data->stack_b->init);
+			if (data->stack_b->top->next->nb > data->stack_b->top->nb)
+				double_swap(data->stack_a->top, data->stack_b->top);
 			else
-				swap(data->stack_a->init, STACK_A);
+				swap(data->stack_a->top, STACK_A);
 		}
 		else
-			swap(data->stack_a->init, STACK_A);
+			swap(data->stack_a->top, STACK_A);
 	}
 	else if (data->stack_b->size > 1)
 	{
-		if (data->stack_b->init->next->nb > data->stack_b->init->nb)
-			swap(data->stack_b->init, STACK_B);
+		if (data->stack_b->top->next->nb > data->stack_b->top->nb)
+			swap(data->stack_b->top, STACK_B);
 	}
 } */
 
 void	ps_check_swap_small(t_stack *a, t_stack *b)
 {
-	if (a->init->nb != a->bigger)
+	if (a->top->nb != a->max)
 	{
-		if (a->init->next->nb < a->init->nb || a->init->next->nb == a->bigger)
+		if (a->top->next->nb < a->top->nb || a->top->next->nb == a->max)
 		{
 			if (b->size > 1)
 			{
-				if (b->init->next->nb > b->init->nb)
-					double_swap(a->init, b->init);
+				if (b->top->next->nb > b->top->nb)
+					double_swap(a->top, b->top);
 				else
-					swap(a->init, STACK_A);
+					swap(a->top, STACK_A);
 			}
 			else
-				swap(a->init, STACK_A);
+				swap(a->top, STACK_A);
 		}
 	}
 	else if (b->size > 1)
 	{
-		if (b->init->next->nb > b->init->nb)
-			swap(b->init, STACK_B);
+		if (b->top->next->nb > b->top->nb)
+			swap(b->top, STACK_B);
 	}
 }
 
 void	ps_small(t_stack *a, t_stack *b)
 {
-	if (ps_bigger_first(a) == ORDER)
+	if (ps_max_first(a) == ORDER)
 		return ;
-	if (a->end->nb == a->smaller)
+	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
 	ps_check_swap_small(a, b);
-	if (ps_check_order(a->init) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return ;
 	push(a, b, STACK_B);
 	b->size++;
 	a->size--;
-	a->smaller = ps_smaller(a);
-	a->bigger = ps_bigger(a);
+	a->min = ps_min(a);
+	a->max = ps_max(a);
 	if (b->size > 1) ///
 	{
-		b->smaller = ps_smaller(b);
-		if (b->init->nb == b->smaller)
+		b->min = ps_min(b);
+		if (b->top->nb == b->min)
 		{
-			if (b->init->nb < a->bigger)
+			if (b->top->nb < a->max)
 				rotate(b, STACK_B);
 		}
 	}

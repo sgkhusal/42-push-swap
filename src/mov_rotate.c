@@ -14,12 +14,12 @@
 
 void	rotate(t_stack *stack, char s)
 {
-	stack->init->prev = stack->end;
-	stack->end->next = stack->init;
-	stack->end = stack->init;
-	stack->init = stack->init->next;
-	stack->init->prev = NULL;
-	stack->end->next = NULL;
+	stack->top->prev = stack->bottom;
+	stack->bottom->next = stack->top;
+	stack->bottom = stack->top;
+	stack->top = stack->top->next;
+	stack->top->prev = NULL;
+	stack->bottom->next = NULL;
 	if (s == STACK_A)
 		ft_putstr_fd("ra\n", 1);
 	else if (s == STACK_B)

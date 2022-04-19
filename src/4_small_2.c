@@ -14,13 +14,13 @@
 
 int	ps_order_6(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(a);
+	rotate_max_top(a);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(a, b) == ORDER)
 	{
 		push(b, a, STACK_A);
-		if (ps_check_order(a->init) == ORDER)
+		if (ps_check_order(a->top) == ORDER)
 			return (ORDER);
 		else
 			return (ps_order_6(a, b)); // acho que pode entrar em loop
@@ -33,8 +33,8 @@ int	ps_order_6(t_stack *a, t_stack *b)
 	else
 	{
 		ps_order_3(a, STACK_A);
-		b->smaller = ps_smaller(b);
-		b->bigger = ps_bigger(b);
+		b->min = stack_min(b);
+		b->max = stack_max(b);
 		ps_order_3_reverse(b, STACK_B);
 		ps_small_part2(a, b);
 		ps_small_part2(a, b);
@@ -43,7 +43,7 @@ int	ps_order_6(t_stack *a, t_stack *b)
 		else
 			return (ps_order_6(a, b));
 	}
-	if (ps_check_order(a->init) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return (ORDER);
 	else
 		return (ps_order_6(a, b));
@@ -51,7 +51,7 @@ int	ps_order_6(t_stack *a, t_stack *b)
 
 int	ps_order_7(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(a);
+	rotate_max_top(a);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(a, b) == ORDER)
@@ -67,8 +67,8 @@ int	ps_order_7(t_stack *a, t_stack *b)
 	else
 	{
 		ps_order_4(a, b);
-		b->smaller = ps_smaller(b);
-		b->bigger = ps_bigger(b);
+		b->min = stack_min(b);
+		b->max = stack_max(b);
 		ps_order_3_reverse(b, STACK_B);
 		ps_small_part2(a, b);
 		ps_small_part2(a, b);
@@ -77,7 +77,7 @@ int	ps_order_7(t_stack *a, t_stack *b)
 		else
 			return (ps_order_7(a, b));
 	}
-	if (ps_check_order(a->init) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return (ORDER);
 	else
 		return (ps_order_7(a, b));
@@ -85,7 +85,7 @@ int	ps_order_7(t_stack *a, t_stack *b)
 
 int	ps_order_8(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(a);
+	rotate_max_top(a);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
 	if (ps_small_part1(a, b) == ORDER)
@@ -100,8 +100,8 @@ int	ps_order_8(t_stack *a, t_stack *b)
 	}
 	else
 	{
-		b->smaller = ps_smaller(b);
-		b->bigger = ps_bigger(b);
+		b->min = stack_min(b);
+		b->max = stack_max(b);
 		ps_order_3_reverse(b, STACK_B);
 		if (ps_small_part1(a, b) == ORDER)
 		{
@@ -112,8 +112,8 @@ int	ps_order_8(t_stack *a, t_stack *b)
 		else
 		{
 			ps_order_4(a, b);
-			b->smaller = ps_smaller(b);
-			b->bigger = ps_bigger(b);
+			b->min = stack_min(b);
+			b->max = stack_max(b);
 			ps_small_part2(a, b);
 			ps_small_part2(a, b);
 			ps_small_part2(a, b);
@@ -123,7 +123,7 @@ int	ps_order_8(t_stack *a, t_stack *b)
 				return (ps_order_8(a, b));
 		}
 	}
-	if (ps_check_order(a->init) == ORDER)
+	if (ps_check_order(a->top) == ORDER)
 		return (ORDER);
 	else
 		return (ps_order_8(a, b));
@@ -131,7 +131,7 @@ int	ps_order_8(t_stack *a, t_stack *b)
 
 int	ps_order_9(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(a);
+	rotate_max_top(a);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
 	ps_order_8(a, b);
@@ -143,7 +143,7 @@ int	ps_order_9(t_stack *a, t_stack *b)
 
 int	ps_order_10(t_stack *a, t_stack *b)
 {
-	ps_bigger_first(a);
+	rotate_max_top(a);
 	if (ps_small_part1(a, b) == ORDER)
 		return (ORDER);
 	ps_order_9(a, b);

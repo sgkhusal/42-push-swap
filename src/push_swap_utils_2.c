@@ -21,13 +21,13 @@ void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-int	ps_bigger(t_stack *stack)
+int	stack_max(t_stack *stack)
 {
 	t_dlist	*aux;
 	int		big;
 
-	big = stack->init->nb;
-	aux = stack->init->next;
+	big = stack->top->nb;
+	aux = stack->top->next;
 	while (aux)
 	{
 		if (aux->nb > big)
@@ -37,13 +37,13 @@ int	ps_bigger(t_stack *stack)
 	return (big);
 }
 
-int	ps_smaller(t_stack *stack)
+int	stack_min(t_stack *stack)
 {
 	t_dlist	*aux;
 	int		small;
 
-	small = stack->init->nb;
-	aux = stack->init->next;
+	small = stack->top->nb;
+	aux = stack->top->next;
 	while (aux)
 	{
 		if (aux->nb < small)

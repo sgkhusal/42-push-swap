@@ -38,10 +38,10 @@ typedef struct s_dlist
 
 typedef struct s_stack
 {
-	t_dlist	*init;
-	t_dlist	*end;
-	int		bigger;
-	int		smaller;
+	t_dlist	*top;
+	t_dlist	*bottom;
+	int		max;
+	int		min;
 	int		size;
 }			t_stack;
 
@@ -67,13 +67,13 @@ void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 
 int		ps_check_order(t_dlist *lst);
 int		ps_check_reverse_order(t_dlist *lst);
-int		ps_bigger(t_stack *stack);
-int		ps_smaller(t_stack *stack);
+int		stack_max(t_stack *stack);
+int		stack_min(t_stack *stack);
 void	ft_swap(int *a, int *b);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_order_3_reverse(t_stack *stack, char s);
-int		ps_bigger_first(t_stack *a);
+int		rotate_max_top(t_stack *a);
 int		ps_small_part1(t_stack *a, t_stack *b);
 int		ps_small_part2(t_stack *a, t_stack *b);
 int		ps_order_4(t_stack *a, t_stack *b);

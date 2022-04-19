@@ -20,7 +20,7 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 	t_dlist		*tmp;
 
 	i = 1;
-	aux = stack->init;
+	aux = stack->top;
 	while (i < stack_size)
 	{
 		if (ps_check_char(numbers[i]) == E_NOT_INT)
@@ -36,7 +36,7 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 		aux = tmp;
 		i++;
 	}
-	stack->end = aux;
+	stack->bottom = aux;
 	ps_check_repeated_nb(stack);
 	ps_check_input_order(stack);
 }
@@ -59,8 +59,8 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 		nb = ft_atol(numbers[0]);
 		if (nb > 2147483647 || nb < -2147483648)
 			ps_error(stack);
-		stack->init = ft_dlstnew((int) nb);
-		if (stack->init == NULL)
+		stack->top = ft_dlstnew((int) nb);
+		if (stack->top == NULL)
 			ps_error(stack);
 		ps_fill_stack_a(stack, stack_size, numbers);
 	}
@@ -74,7 +74,7 @@ t_stack	*init_stack(void)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
 		return (NULL);
-	stack->init = NULL;
-	stack->end = NULL;
+	stack->top = NULL;
+	stack->bottom = NULL;
 	return (stack);
 }

@@ -14,32 +14,32 @@
 
 static void	normal_push(t_stack *src, t_stack *dst)
 {
-	dst->init->prev = src->init;
-	src->init = src->init->next;
-	dst->init->prev->next = dst->init;
-	dst->init = dst->init->prev;
-	dst->init->prev = NULL;
-	src->init->prev = NULL;
+	dst->top->prev = src->top;
+	src->top = src->top->next;
+	dst->top->prev->next = dst->top;
+	dst->top = dst->top->prev;
+	dst->top->prev = NULL;
+	src->top->prev = NULL;
 }
 
 void	push(t_stack *src, t_stack *dst, char s)
 {
-	if (dst->init == NULL)
+	if (dst->top == NULL)
 	{
-		dst->init = src->init;
-		dst->end = dst->init;
-		src->init = src->init->next;
-		dst->init->next = NULL;
-		dst->init->prev = NULL;
-		src->init->prev = NULL;
+		dst->top = src->top;
+		dst->bottom = dst->top;
+		src->top = src->top->next;
+		dst->top->next = NULL;
+		dst->top->prev = NULL;
+		src->top->prev = NULL;
 	}
-	else if (src->init == src->end)
+	else if (src->top == src->bottom)
 	{
-		dst->init->prev = src->init;
-		src->init->next = dst->init;
-		dst->init = src->init;
-		src->init = NULL;
-		src->end = NULL;
+		dst->top->prev = src->top;
+		src->top->next = dst->top;
+		dst->top = src->top;
+		src->top = NULL;
+		src->bottom = NULL;
 	}
 	else
 		normal_push(src, dst);

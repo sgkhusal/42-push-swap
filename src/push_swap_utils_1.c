@@ -70,7 +70,7 @@ int	ps_add_elem(t_stack *stack, char *nbr, int idx)
 	if (new == NULL)
 		return (E_MALLOC);
 	if (idx == 0)
-		stack->init = new;
-	ft_dlstadd_back(&stack->end, new);
+		stack->top = new;
+	ft_dlstadd_back(&stack->bottom, new);
 	return (0);
 }
