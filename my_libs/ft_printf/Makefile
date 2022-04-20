@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 17:01:10 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/08 04:53:49 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/20 22:48:04 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJ =		$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 INCLUDES =	-I./ -I../libft
 
 # compilation
-CC =		clang
+CC =		gcc
 CFLAGS = 	-Wall -Werror -Wextra
 
 # clean
