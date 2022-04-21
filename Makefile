@@ -36,10 +36,9 @@ OBJ_PATH =			obj
 HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
-SRC_FILES =			1_main.c 2_init.c 3_check_args.c \
-					4_small.c 4_small_utils.c \
-					mov_push.c mov_swap.c mov_rotate.c mov_rev_rotate.c \
-					push_swap_utils_1.c push_swap_utils_2.c \
+SRC_FILES =			1_push_swap.c 2_ps_init.c 3_ps_check_args.c \
+					4_ps_small.c 5_ps_small_utils.c \
+					ps_movs_1.c ps_movs_2.c ps_utils_1.c ps_utils_2.c \
 					clean.c \
 					tests.c tests_mov.c
 #SRC_BONUS_FILES =	

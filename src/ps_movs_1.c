@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+void	swap(t_dlist *lst, char s)
+{
+	ft_swap(&lst->nb, &lst->next->nb);
+	if (s == STACK_A)
+		ft_putstr_fd("sa\n", 1);
+	else if (s == STACK_B)
+		ft_putstr_fd("sb\n", 1);
+}
+
+void	double_swap(t_dlist *lst_a, t_dlist *lst_b)
+{
+	ft_swap(&lst_a->nb, &lst_a->next->nb);
+	ft_swap(&lst_b->nb, &lst_b->next->nb);
+	ft_putstr_fd("ss\n", 1);
+}
+
 static void	update_stack_data(t_stack *src, t_stack *dst)
 {
 	dst->size++;
