@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:33:41 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 21:38:52 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/21 03:55:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,20 @@ void	ps_first_swap_small(t_stack *a, t_stack *b)
 				swap(a->top, STACK_A);
 		}
 	}
-	else if (b->size > 1)
+	/* else if (b->size > 1)
 	{
 		if (b->top->next->nb > b->top->nb)
 			swap(b->top, STACK_B);
-	}
+	} */
 }
 
 void	ps_small_part11(t_stack *a, t_stack *b)
 {
+	/* if (a->size == 4)
+	{
+		if (ps_order_4_special_case(a, STACK_A) == ORDER)
+			return ;
+	} */
 	if (a->top->nb == a->max && ps_check_order(a->top->next) == ORDER)
 		rotate(a, STACK_A);
 	if (a->bottom->nb == a->min)
@@ -128,12 +133,12 @@ void	ps_small_part12(t_stack *a, t_stack *b)
 		rotate(a, STACK_A);
 	if (a->top->next->nb < a->top->nb)
 		swap(a->top, STACK_A); // verificar se não faz um double swap
+	while (ps_check_order(a->top) != ORDER)
+		ps_small_part11(a, b);
 }
 
 void	ps_small(t_stack *a, t_stack *b, int size)
 {
-	if (size == 4)
-		ps_order_4_special_case(a, STACK_A);
 	while (ps_check_order(a->top) != ORDER)
 		ps_small_part11(a, b);
 	while (b->size > 0)
