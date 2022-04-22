@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/22 02:49:22 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:16:54 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ps_order_3(t_stack *a, char s)
 	}
 }
 
-static void	ps_first_swap_small(t_stack *a, t_stack *b)
+/* static void	ps_first_swap_small(t_stack *a, t_stack *b)
 {
 	if (a->top->nb != a->max)
 	{
@@ -54,12 +54,12 @@ static void	ps_first_swap_small(t_stack *a, t_stack *b)
 				swap(a->top, STACK_A);
 		}
 	}
-	/* else if (b->size > 1)
+	else if (b->size > 1)
 	{
 		if (b->top->next->nb > b->top->nb)
 			swap(b->top, STACK_B);
-	} */
-}
+	}
+} */
 
 static void	ps_small_part1(t_stack *a, t_stack *b)
 {
@@ -68,11 +68,21 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		reverse_rotate(a, STACK_A);
 	else if (a->top->nb == a->max)
 		rotate(a, STACK_A);
-	ps_first_swap_small(a, b);
-	if (ps_check_order(a->top) == NOT_ORDER)
+	else if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
+	a->top->nb != a->min))
+	{
+		if (b->size > 1 && b->top->next->nb > b->top->nb && \
+		b->top->next->nb < a->max)
+			swap(a->top, STACK_A);
+		else
+			swap(a->top, STACK_A);
+	}
+	else if (ps_check_order(a->top) == NOT_ORDER)
+	{
 		push(a, b, STACK_B);
-	if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
-		rotate(b, STACK_B); ///
+		if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+			rotate(b, STACK_B); ///
+	}
 	if (a->size == 3)
 		ps_order_3(a, STACK_A);
 }
