@@ -72,8 +72,8 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		else
 			rotate(a, STACK_A);
 	}
-	/* else if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
-		rotate(b, STACK_B); */
+	else if (b->size > 1 && b->top->nb == b->min)
+		rotate(b, STACK_B);
 	else if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
 	a->top->nb != a->min))
 	{
