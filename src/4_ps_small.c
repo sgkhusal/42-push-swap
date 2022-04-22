@@ -36,31 +36,6 @@ void	ps_order_3(t_stack *a, char s)
 	}
 }
 
-/* static void	ps_first_swap_small(t_stack *a, t_stack *b)
-{
-	if (a->top->nb != a->max)
-	{
-		if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
-		a->top->nb != a->min))
-		{
-			if (b->size > 1)
-			{
-				if (b->top->next->nb > b->top->nb && b->top->next->nb < a->max) /// verificar
-					double_swap(a->top, b->top);
-				else
-					swap(a->top, STACK_A);
-			}
-			else
-				swap(a->top, STACK_A);
-		}
-	}
-	else if (b->size > 1)
-	{
-		if (b->top->next->nb > b->top->nb)
-			swap(b->top, STACK_B);
-	}
-} */
-
 static void	ps_small_swap(t_stack *a, t_stack *b)
 {
 	if (b->size > 1 && b->top->next->nb > b->top->nb && \
@@ -88,7 +63,7 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		ps_small_swap(a, b);
 	else if (a->size == 3)
 		ps_order_3(a, STACK_A);
-	else if (ps_check_order(a->top) == NOT_ORDER)
+	else if (ps_check_order(a->top) != ORDER)
 		push(a, b, STACK_B);
 }
 

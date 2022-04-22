@@ -37,11 +37,11 @@ HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_push_swap.c 2_ps_init.c 3_ps_check_args.c \
-					4_ps_small.c 5_ps_small_utils.c \
+					4_ps_small.c \
 					ps_movs_1.c ps_movs_2.c ps_utils_1.c ps_utils_2.c \
 					clean.c \
 					tests.c tests_mov.c
-#SRC_BONUS_FILES =	
+#SRC_BONUS_FILES =
 HEADER_FILES =		push_swap.h
 
 SRC =				$(addprefix $(SRC_PATH)/, $(SRC_FILES))
@@ -172,7 +172,7 @@ reb:		fclean bonus
 
 reall:		fcleanlib fclean all bonus
 
-cleanlib:	
+cleanlib:
 	@cd $(PRINTF_PATH) && $(MAKE) clean
 	@cd $(LIBFT_PATH) && $(MAKE) clean
 

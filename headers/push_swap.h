@@ -15,7 +15,6 @@
 
 // my libraries and functions
 # include "libft.h"
-# include "get_next_line.h"
 # include "ft_printf.h"
 
 # define OK 0
@@ -24,7 +23,6 @@
 
 # define STACK_A 'a'
 # define STACK_B 'b'
-# define STACK_A_B 'c'
 
 # define ORDER 1
 # define NOT_ORDER 0
