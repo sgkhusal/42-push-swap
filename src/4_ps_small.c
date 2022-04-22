@@ -68,13 +68,13 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		reverse_rotate(a, STACK_A);
 	else if (a->top->nb == a->max)
 	{
-		if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+		/* if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
 			double_rotate(a, b);
-		else
+		else */
 			rotate(a, STACK_A);
 	}
-	else if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
-		rotate(b, STACK_B);
+	/* else if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+		rotate(b, STACK_B); */
 	else if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
 	a->top->nb != a->min))
 	{
@@ -84,14 +84,14 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		else
 			swap(a->top, STACK_A);
 	}
+	else if (a->size == 3)
+		ps_order_3(a, STACK_A);
 	else if (ps_check_order(a->top) == NOT_ORDER)
 	{
 		push(a, b, STACK_B);
 		/* if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
 			rotate(b, STACK_B); */ ///
 	}
-	if (a->size == 3)
-		ps_order_3(a, STACK_A);
 }
 
 static void	ps_small_part2(t_stack *a, t_stack *b)

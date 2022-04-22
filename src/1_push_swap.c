@@ -19,7 +19,7 @@ void	push_swap(t_stack *a, t_stack *b, int size)
 		swap(a->top, STACK_A);
 	else if (a->size == 3)
 		ps_order_3(a, STACK_A);
-	else if (a->size < 11)
+	else if (a->size <= 11)
 		ps_small(a, b, size);
 }
 
