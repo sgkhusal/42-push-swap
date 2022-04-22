@@ -61,6 +61,15 @@ void	ps_order_3(t_stack *a, char s)
 	}
 } */
 
+static void	ps_small_swap(t_stack *a, t_stack *b)
+{
+	if (b->size > 1 && b->top->next->nb > b->top->nb && \
+	b->top->next->nb < a->max)
+		double_swap(a->top, b->top);
+	else
+		swap(a->top, STACK_A);
+}
+
 static void	ps_small_part1(t_stack *a, t_stack *b)
 {
 	if (a->bottom->nb == a->min)
@@ -76,13 +85,7 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 		rotate(b, STACK_B);
 	else if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
 	a->top->nb != a->min))
-	{
-		if (b->size > 1 && b->top->next->nb > b->top->nb && \
-		b->top->next->nb < a->max)
-			double_swap(a->top, b->top);
-		else
-			swap(a->top, STACK_A);
-	}
+		ps_small_swap(a, b);
 	else if (a->size == 3)
 		ps_order_3(a, STACK_A);
 	else if (ps_check_order(a->top) == NOT_ORDER)
@@ -91,13 +94,13 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 
 static void	ps_small_part2(t_stack *a, t_stack *b)
 {
-	/* if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
-			rotate(b, STACK_B); */ ///
+	if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+		rotate(b, STACK_B);
 	push(b, a, STACK_A);
 	if (a->top->nb == a->max)
 		rotate(a, STACK_A);
 	if (a->top->next->nb < a->top->nb)
-		swap(a->top, STACK_A); // verificar se não faz um double swap
+		ps_small_swap(a, b);
 	while (ps_check_order(a->top) != ORDER)
 		ps_small_part1(a, b);
 }
