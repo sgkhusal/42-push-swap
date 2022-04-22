@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/22 03:32:07 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:44:19 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,14 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
 	else if (a->top->nb == a->max)
-		rotate(a, STACK_A);
+	{
+		if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+			double_rotate(a, b);
+		else
+			rotate(a, STACK_A);
+	}
+	else if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+		rotate(b, STACK_B);
 	else if (a->top->next->nb < a->top->nb || (a->top->next->nb == a->max && \
 	a->top->nb != a->min))
 	{
@@ -80,8 +87,8 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 	else if (ps_check_order(a->top) == NOT_ORDER)
 	{
 		push(a, b, STACK_B);
-		if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
-			rotate(b, STACK_B); ///
+		/* if (b->size > 1 && b->top->nb == b->min && b->top->nb < a->max)
+			rotate(b, STACK_B); */ ///
 	}
 	if (a->size == 3)
 		ps_order_3(a, STACK_A);
