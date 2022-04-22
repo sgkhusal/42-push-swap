@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/22 03:16:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/22 03:32:07 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 	{
 		if (b->size > 1 && b->top->next->nb > b->top->nb && \
 		b->top->next->nb < a->max)
-			swap(a->top, STACK_A);
+			double_swap(a->top, b->top);
 		else
 			swap(a->top, STACK_A);
 	}
