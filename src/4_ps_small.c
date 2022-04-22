@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4_small_1.c                                        :+:      :+:    :+:   */
+/*   4_ps_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/21 22:16:14 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/22 02:49:22 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ static void	ps_first_swap_small(t_stack *a, t_stack *b)
 
 static void	ps_small_part1(t_stack *a, t_stack *b)
 {
-	if (a->top->nb == a->max && ps_check_order(a->top->next) == ORDER)
-		rotate(a, STACK_A);
+	//if (a->top->nb == a->max && ps_check_order(a->top->next) == ORDER)
 	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
+	else if (a->top->nb == a->max)
+		rotate(a, STACK_A);
 	ps_first_swap_small(a, b);
 	if (ps_check_order(a->top) == NOT_ORDER)
 		push(a, b, STACK_B);
@@ -79,8 +80,8 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 static void	ps_small_part2(t_stack *a, t_stack *b)
 {
 	push(b, a, STACK_A);
-	if (a->top->nb == a->min && b->size == 0)
-		return ;
+	/* if (a->top->nb == a->min && b->size == 0)
+		return ; */
 	if (a->top->nb == a->max)
 		rotate(a, STACK_A);
 	if (a->top->next->nb < a->top->nb)
