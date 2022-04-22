@@ -63,7 +63,6 @@ void	ps_order_3(t_stack *a, char s)
 
 static void	ps_small_part1(t_stack *a, t_stack *b)
 {
-	//if (a->top->nb == a->max && ps_check_order(a->top->next) == ORDER)
 	if (a->bottom->nb == a->min)
 		reverse_rotate(a, STACK_A);
 	else if (a->top->nb == a->max)
