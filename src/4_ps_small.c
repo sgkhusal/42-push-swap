@@ -97,8 +97,6 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 static void	ps_small_part2(t_stack *a, t_stack *b)
 {
 	push(b, a, STACK_A);
-	/* if (a->top->nb == a->min && b->size == 0)
-		return ; */
 	if (a->top->nb == a->max)
 		rotate(a, STACK_A);
 	if (a->top->next->nb < a->top->nb)
