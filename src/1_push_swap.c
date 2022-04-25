@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_main.c                                           :+:      :+:    :+:   */
+/*   1_push_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/19 22:19:39 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/25 15:39:56 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "test.h" ///////////////////////////
 
-void	push_swap(t_stack *a, t_stack *b, int size)
+void	push_swap(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
 		swap(a->top, STACK_A);
 	else if (a->size == 3)
 		ps_order_3(a, STACK_A);
 	else if (a->size <= 11)
-		ps_small(a, b, size);
+		ps_small(a, b);
+	else
+		ps_big(a, b);
 }
 
 int	main(int argc, char *argv[])
@@ -34,7 +36,7 @@ int	main(int argc, char *argv[])
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	//print_stack(data.stack_a);
-	push_swap(data.stack_a, data.stack_b, argc - 1);
+	push_swap(data.stack_a, data.stack_b);
 	//ft_printf("Final stack:\n");
 	//print_stack(data.stack_a);
 	//print_reverse_stack(data.stack_a);

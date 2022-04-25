@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/21 22:19:35 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/25 15:40:20 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_push_swap
 	t_stack	*stack_b;
 }			t_push_swap;
 
-t_stack	*init_stack();
+t_stack	*init_stack(void);
 t_stack	*ps_init_stack_a(int stack_size, char *numbers[]);
 int		ps_check_char(char *nb);
 void	ps_check_repeated_nb(t_stack *stack);
@@ -70,7 +70,7 @@ int		stack_min(t_stack *stack);
 void	ft_swap(int *a, int *b);
 
 void	ps_order_3(t_stack *stack, char s);
-void	ps_small(t_stack *a, t_stack *b, int size);
+void	ps_small(t_stack *a, t_stack *b);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);

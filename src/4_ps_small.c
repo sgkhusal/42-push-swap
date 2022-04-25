@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_ps_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/22 03:44:19 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/25 15:39:38 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	ps_small_part2(t_stack *a, t_stack *b)
 		ps_small_part1(a, b);
 }
 
-void	ps_small(t_stack *a, t_stack *b, int size)
+void	ps_small(t_stack *a, t_stack *b)
 {
 	while (ps_check_order(a->top) != ORDER)
 		ps_small_part1(a, b);
@@ -89,5 +89,5 @@ void	ps_small(t_stack *a, t_stack *b, int size)
 	if (ps_check_order(a->top) == ORDER && b->size == 0)
 		return ;
 	else
-		ps_small(a, b, size);
+		ps_small(a, b);
 }
