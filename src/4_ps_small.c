@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/25 15:39:38 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/25 23:34:14 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,12 @@
 
 void	ps_order_3(t_stack *a, char s)
 {
-	if (ps_check_order(a->top) == ORDER)
-		return ;
-	if (a->top->nb == a->min)
-	{
-		reverse_rotate(a, s);
-		swap(a->top, s);
-	}
-	else if (a->top->nb == a->max)
-	{
+	if (a->top->nb == a->max)
 		rotate(a, s);
-		if (a->top->next->nb == a->min)
-			swap(a->top, s);
-	}
-	else
-	{
-		if (a->top->next->nb == a->min)
-			swap(a->top, s);
-		else
-			reverse_rotate(a, s);
-	}
+	else if (a->top->next->nb == a->max)
+		reverse_rotate(a, s);
+	if (a->top->nb > a->top->next->nb)
+		swap(a->top, s);
 }
 
 static void	ps_small_swap(t_stack *a, t_stack *b)
