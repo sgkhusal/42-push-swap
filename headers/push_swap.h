@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 22:28:36 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/28 22:49:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ps_check_reverse_order(t_dlist *lst);
 int		stack_max(t_stack *stack);
 int		stack_min(t_stack *stack);
 void	ft_swap(int *a, int *b);
-//double	ps_median(t_push_swap *ps);
+double	ps_median(t_push_swap *ps);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_small(t_stack *a, t_stack *b);
@@ -82,7 +82,7 @@ void	ps_error(t_stack *stack);
 void	ps_close(t_push_swap *data);
 
 t_dlist	*ft_dlstnew(int nb);
-//t_dlist	*ps_dlstdup(t_dlist *lst_init);
+t_dlist	*dlstdup(t_dlist *lst_init);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
