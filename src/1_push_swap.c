@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 23:05:38 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:37:45 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	push_swap(t_stack *a, t_stack *b, t_push_swap *data)
 	else if (a->size <= 9)
 		ps_small(a, b);
 	else if (a->size <= 12)
-		ps_selection_sort(a, b);
+		ps_selection_sort(a, b, b->size);
 	else
 		ps_big(a, b, data);
 }
@@ -34,10 +34,11 @@ int	main(int argc, char *argv[])
 		return (0);
 	data.stack_a = ps_init_stack_a(argc - 1, &argv[1]);
 	data.stack_b = init_stack();
+	data.order = NULL;
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	push_swap(data.stack_a, data.stack_b, &data);
-	if (ps_check_order(data.stack_a->top) == ORDER)
+	if (ps_check_order(data.stack_a->top) == ORDER && data.stack_b->size == 0)
 	{
 		ft_printf("\033[38;5;83m");
 		ft_printf("OK\n");

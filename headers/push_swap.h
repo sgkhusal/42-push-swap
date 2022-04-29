@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 22:49:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:50:23 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 
 # define ORDER 0
 # define NOT_ORDER 1
+
+# define EVEN 0
+# define ODD 1
 
 typedef struct s_dlist
 {
@@ -74,15 +77,16 @@ double	ps_median(t_push_swap *ps);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_small(t_stack *a, t_stack *b);
-void	ps_selection_sort(t_stack *a, t_stack *b);
 void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps);
+void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size);
+void	ps_selection_sort_section_b(t_stack *a, t_stack *b, int section_size);
 
 void	clean_stack(t_stack *stack);
 void	ps_error(t_stack *stack);
 void	ps_close(t_push_swap *data);
 
 t_dlist	*ft_dlstnew(int nb);
-t_dlist	*dlstdup(t_dlist *lst_init);
+t_dlist	*dlstdup(t_dlist *lst, int size);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
