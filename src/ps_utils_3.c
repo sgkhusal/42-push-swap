@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 22:58:45 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/28 23:34:34 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	dlst_buble_sort(t_dlist *lst)
 	t_dlist	*aux2;
 
 	aux1 = lst;
-	while(aux1)
+	while (aux1)
 	{
 		aux2 = aux1->next;
 		while (aux2)
@@ -75,6 +75,6 @@ double	ps_median(t_push_swap *ps)
 	{
 		while (++i <= (ps->order->size - 1) / 2)
 			aux = aux->next;
-		return (((double) (aux->nb + aux->next->nb)) / 2);
+		return (((double)(aux->nb + aux->next->nb)) / 2);
 	}
 }

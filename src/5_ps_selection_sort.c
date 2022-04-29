@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 22:17:39 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 22:27:03 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/28 23:35:05 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	dlist_min_pos(t_stack *a)
 {
 	t_dlist	*aux;
-	int			pos;
+	int		pos;
 
 	aux = a->top;
 	pos = 1;
@@ -36,7 +36,7 @@ void	ps_selection_sort(t_stack *a, t_stack *b)
 		pos = dlist_min_pos(a);
 		while (a->top->nb != a->min)
 		{
-			if (pos > a->size / 2 )
+			if (pos > a->size / 2)
 				reverse_rotate(a, STACK_A);
 			else
 				rotate(a, STACK_A);
