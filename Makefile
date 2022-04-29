@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: sguilher <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/21 22:24:00 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/28 22:19:51 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,9 @@ HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_push_swap.c 2_ps_init.c 3_ps_check_args.c \
-					4_ps_small.c \
+					4_ps_small.c 5_ps_selection_sort.c 6_ps_big.c \
 					ps_movs_1.c ps_movs_2.c ps_utils_1.c ps_utils_2.c \
-					clean.c \
+					ps_utils_3.c clean.c \
 					tests.c tests_mov.c
 #SRC_BONUS_FILES =
 HEADER_FILES =		push_swap.h
@@ -55,7 +55,7 @@ HEADER =			$(addprefix $(HEADER_PATH)/, $(HEADER_FILES))
 
 # compilation
 CC =		gcc
-CFLAGS =	-Wall -Werror -Wextra #-g3 -fsanitize=leak
+CFLAGS =	-g3 -Wall -Werror -Wextra #-g3 -fsanitize=leak
 
 # clean
 RM =		-rm -f
@@ -94,7 +94,7 @@ $(NAME):	$(LIBFT) $(PRINTF) $(OBJ) $(OBJ_TEST) $(HEADER) ##########
 
 TESTS =	test0 test10 test100 test500
 #run:	$(TESTS)
-run:	test0 test10
+run:	test0 test10 test100
 
 test0:	$(NAME)
 	cd tests && ./tester.sh
