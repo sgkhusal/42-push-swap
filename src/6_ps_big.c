@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 22:20:21 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/29 23:02:41 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,13 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 	int	qty;
 	int	type;
 
-	type = EVEN;
+	//type = EVEN;
 	qty = ps_section_size(a->size);
 	if (qty % 2 == ODD)
 		type = ODD;
 	//ft_printf("stack half size = %i\n", qty);
 	ps_quick_sort_smaller(a, b, ps, b->size + qty);
-	if (a->size >= 10)
+	if (a->size > 13)
 	{
 		ps_set(a, ps, a->size);
 		ps_big_step1(a, b, ps);
@@ -133,12 +133,14 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 		//ft_printf("stack a size = %i\n", a->size);
 		ps_set(b, ps, qty);
 		qty = ps_section_size(qty);
+		if (type == ODD)
+			qty = qty - 1;
 		//ft_printf("qty = %i\n", qty);
 		ps_quick_sort_bigger(a, b, ps, a->size + qty);
 		ps_selection_sort(a, b, b->size);
 		//ft_printf("qty = %i\n", qty);
 		if (type == ODD)
-			qty = qty - 1;
+			qty = qty + 1;
 		ps_selection_sort_section_b(a, b, qty);
 	}
 	else
