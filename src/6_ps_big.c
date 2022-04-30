@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 23:02:41 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 00:58:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,44 +65,34 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 
 void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
+	//print_stack2(a);
+	//print_stack2(b);
 	while (b->size < ref)
 	{
-		//ps_swap(a, b);
-		/* if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
-			double_rotate(a, b);
-		else if (a->top->nb > ps->median)
-			rotate(a, STACK_A);
-		else if (b->size > 1 && b->top->nb < b->bottom->nb)
-			rotate(b, STACK_B);
-		else
-		{
-			push(a, b, STACK_B);
-			//ps_swap(a, b);
-		} */
 		if (a->top->nb > ps->median)
 			rotate(a, STACK_A);
 		else
 			push(a, b, STACK_B);
 	}
+	//print_stack2(a);
+	//print_stack2(b);
 	//ft_printf("stack b size = %i\n", b->size);
-	//ps_rotate(a, b, ps);
 }
 
 void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
 	//printf("median = %f\n", ps->median);
+	//print_stack2(a);
 	//print_stack2(b);
 	while (a->size < ref)
 	{
-		//ps_swap(a, b);
 		if (b->top->nb < ps->median)
 			rotate(b, STACK_B);
 		else
-		{
 			push(b, a, STACK_A);
-			//ps_swap(a, b);
-		}
 	}
+	//print_stack2(a);
+	//print_stack2(b);
 	//ft_printf("stack b size = %i\n", b->size);
 }
 
@@ -116,37 +106,39 @@ int		ps_section_size(int size)
 
 void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 {
-	int	qty;
-	int	type;
+	int	qty_a;
+	int	qty_b;
 
-	//type = EVEN;
-	qty = ps_section_size(a->size);
-	if (qty % 2 == ODD)
-		type = ODD;
+	qty_a = ps_section_size(a->size);
+	if (a->size % 2 == ODD)
+		qty_b = qty_a - 1;
+	else
+		qty_b = qty_a;
+	//ft_printf("qty_a = %i\n", qty_a);
+	//ft_printf("qty_b = %i\n", qty_b);
 	//ft_printf("stack half size = %i\n", qty);
-	ps_quick_sort_smaller(a, b, ps, b->size + qty);
+	ps_quick_sort_smaller(a, b, ps, b->size + qty_b);
+	//ft_printf("stack_a size = %i\n", a->size);
+	//ft_printf("stack_b size = %i\n", b->size);
 	if (a->size > 13)
 	{
 		ps_set(a, ps, a->size);
 		ps_big_step1(a, b, ps);
-		//ft_printf("qty = %i\n", qty);
 		//ft_printf("stack a size = %i\n", a->size);
-		ps_set(b, ps, qty);
-		qty = ps_section_size(qty);
-		if (type == ODD)
-			qty = qty - 1;
-		//ft_printf("qty = %i\n", qty);
-		ps_quick_sort_bigger(a, b, ps, a->size + qty);
+		ps_set(b, ps, qty_b);
+		qty_a = ps_section_size(qty_b);
+		if (qty_b % 2 == ODD)
+			qty_b = qty_a - 1;
+		else
+			qty_b = qty_a;
+		ps_quick_sort_bigger(a, b, ps, a->size + qty_a);
 		ps_selection_sort(a, b, b->size);
-		//ft_printf("qty = %i\n", qty);
-		if (type == ODD)
-			qty = qty + 1;
-		ps_selection_sort_section_b(a, b, qty);
+		ps_selection_sort_section_b(a, b, qty_b);
 	}
 	else
 	{
 		ps_selection_sort(a, b, b->size);
-		ps_selection_sort_section_b(a, b, qty);
+		ps_selection_sort_section_b(a, b, qty_b);
 	}
 }
 
