@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 22:15:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/29 22:20:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 	while (b->size < ref)
 	{
 		//ps_swap(a, b);
-		if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
+		/* if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
 			double_rotate(a, b);
 		else if (a->top->nb > ps->median)
 			rotate(a, STACK_A);
@@ -78,11 +78,11 @@ void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 		{
 			push(a, b, STACK_B);
 			//ps_swap(a, b);
-		}
-		/* if (a->top->nb > ps->median)
+		} */
+		if (a->top->nb > ps->median)
 			rotate(a, STACK_A);
 		else
-			push(a, b, STACK_B); */
+			push(a, b, STACK_B);
 	}
 	//ft_printf("stack b size = %i\n", b->size);
 	//ps_rotate(a, b, ps);
