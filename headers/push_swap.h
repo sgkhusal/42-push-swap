@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 14:50:23 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 14:55:37 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 	struct s_dlist	*next;
 }					t_dlist;
+
+typedef struct s_quick_sort
+{
+	int		a_size;
+	int		b_size;
+}			t_quick_sort;
 
 typedef struct s_stack
 {

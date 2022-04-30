@@ -6,12 +6,11 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 14:31:38 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 15:00:31 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> ////////////////
 
 void	print_stack2(t_stack *stack)
 {
@@ -55,18 +54,14 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 		clean_stack(ps->order);
 	ps->order = init_stack();
 	ps->order->top = dlstdup(s->top, size);
-	//ps->order->bottom
 	ps->order->max = s->max;
 	ps->order->min = s->min;
 	ps->order->size = size;
 	ps->median = ps_median(ps);
-	//printf("median = %f\n", ps->median);
 }
 
 void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
-	//print_stack2(a);
-	//print_stack2(b);
 	while (b->size < ref)
 	{
 		if (a->top->nb > ps->median)
@@ -74,16 +69,10 @@ void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 		else
 			push(a, b, STACK_B);
 	}
-	//print_stack2(a);
-	//print_stack2(b);
-	//ft_printf("stack b size = %i\n", b->size);
 }
 
 void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
-	//printf("median = %f\n", ps->median);
-	//print_stack2(a);
-	//print_stack2(b);
 	while (a->size < ref)
 	{
 		if (b->top->nb <= ps->median)
@@ -91,71 +80,48 @@ void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 		else
 			push(b, a, STACK_A);
 	}
-	//print_stack2(a);
-	//print_stack2(b);
-	//ft_printf("stack b size = %i\n", b->size);
 }
 
-int		ps_section_size(int size)
+t_quick_sort	ps_section_size(int size)
 {
+	t_quick_sort	qs;
+
 	if (size % 2 == ODD)
-		return(size / 2 + 1);
+	{
+		qs.a_size = size / 2 + 1;
+		qs.b_size = qs.a_size - 1;
+	}
 	else
-		return(size / 2);
+	{
+		qs.a_size = size / 2;
+		qs.b_size = qs.a_size;
+	}
+	return(qs);
 }
 
 void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 {
-	int	qty_a;
-	int	qty_b;
+	t_quick_sort	qs;
 
-	qty_a = ps_section_size(a->size);
-	if (a->size % 2 == ODD)
-		qty_b = qty_a - 1;
-	else
-		qty_b = qty_a;
-	//ft_printf("qty_a = %i\n", qty_a);
-	//ft_printf("qty_b = %i\n", qty_b);
-	//ft_printf("stack half size = %i\n", qty);
-	ps_quick_sort_smaller(a, b, ps, b->size + qty_b);
-	//ft_printf("stack_a size = %i\n", a->size);
-	//ft_printf("stack_b size = %i\n", b->size);
+	qs = ps_section_size(a->size);
+	ps_quick_sort_smaller(a, b, ps, b->size + qs.b_size);
 	if (a->size > 13)
 	{
 		ps_set(a, ps, a->size);
 		ps_big_step1(a, b, ps);
-		//ft_printf("stack a size = %i\n", a->size);
-		ps_set(b, ps, qty_b);
-		qty_a = ps_section_size(qty_b);
-		if (qty_b % 2 == ODD)
-			qty_b = qty_a - 1;
-		else
-			qty_b = qty_a;
-		ps_quick_sort_bigger(a, b, ps, a->size + qty_a);
-		//if (qty_a > 13) //// fodeu!!!!
+		ps_set(b, ps, qs.b_size);
+		qs = ps_section_size(qs.b_size);
+		ps_quick_sort_bigger(a, b, ps, a->size + qs.a_size);
+		//if (qs.a_size > 13) //// AQUI!!!!!!!!!!!!!!!!!!!!!
 		ps_selection_sort(a, b, b->size);
-		ps_selection_sort_section_b(a, b, qty_b);
+		ps_selection_sort_section_b(a, b, qs.b_size);
 	}
 	else
 	{
 		ps_selection_sort(a, b, b->size);
-		ps_selection_sort_section_b(a, b, qty_b);
+		ps_selection_sort_section_b(a, b, qs.b_size);
 	}
 }
-
-/* void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
-{
-	int	qty;
-
-	qty = a->size / 2;
-	while (b->size < qty)
-	{
-		if (a->top->nb > ps->median)
-			rotate(a, STACK_A);
-		else
-			push(a, b, STACK_B);
-	}
-} */
 
 void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps)
 {
