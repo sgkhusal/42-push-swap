@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 17:13:27 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/29 21:26:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_stack2(t_stack *stack)
 	ft_printf("\n");
 }
 
-static void	ps_swap(t_stack *a, t_stack *b)
+/* static void	ps_swap(t_stack *a, t_stack *b)
 {
 	if (a->top->nb > a->top->next->nb)
 	{
@@ -38,8 +38,8 @@ static void	ps_swap(t_stack *a, t_stack *b)
 	else if (b->size > 1 && b->top->next->nb > b->top->nb && b->top->nb != b->min)
 		swap(b->top, STACK_B);
 }
-
-static void	ps_rotate(t_stack *a, t_stack *b, t_push_swap *ps)
+ */
+/* static void	ps_rotate(t_stack *a, t_stack *b, t_push_swap *ps)
 {
 	if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
 		double_rotate(a, b);
@@ -47,7 +47,7 @@ static void	ps_rotate(t_stack *a, t_stack *b, t_push_swap *ps)
 		rotate(a, STACK_A);
 	else if (b->size > 1 && b->top->nb < b->bottom->nb)
 		rotate(b, STACK_B);
-}
+} */
 
 static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 {
@@ -68,7 +68,7 @@ void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 	while (b->size < ref)
 	{
 		//ps_swap(a, b);
-		if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
+		/* if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
 			double_rotate(a, b);
 		else if (a->top->nb > ps->median)
 			rotate(a, STACK_A);
@@ -78,39 +78,43 @@ void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 		{
 			push(a, b, STACK_B);
 			//ps_swap(a, b);
-		}
+		} */
+		if (a->top->nb > ps->median)
+			rotate(a, STACK_A);
+		else
+			push(a, b, STACK_B);
 	}
 	//ft_printf("stack b size = %i\n", b->size);
-	ps_rotate(a, b, ps);
+	//ps_rotate(a, b, ps);
 }
 
 void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
-	int	i;
+	//int	i;
 
 	//printf("median = %f\n", ps->median);
 	//print_stack2(b);
-	i = 0;
+	//i = 0;
 	while (a->size < ref)
 	{
 		//ps_swap(a, b);
-		if (b->size > 1 && b->top->nb < ps->median)
+		if (b->top->nb < ps->median)
 		{
 			rotate(b, STACK_B);
-			i++;
+			//i++;
 		}
 		else
 		{
 			push(b, a, STACK_A);
-			ps_swap(a, b);
+			//ps_swap(a, b);
 		}
 	}
 	//ft_printf("stack b size = %i\n", b->size);
-	while (i > 0)
+	/* while (i > 0)
 	{
 		reverse_rotate(b, STACK_B);
 		i--;
-	}
+	} */
 }
 
 int		ps_section_size(int size)
