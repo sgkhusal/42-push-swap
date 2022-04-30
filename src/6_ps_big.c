@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 15:00:31 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 16:30:23 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	ps->median = ps_median(ps);
 }
 
-void	ps_quick_sort_smaller(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
+void	ps_quick_sort_smaller(t_stack *a, t_stack *b, int median, int ref) // joga no b
 {
 	while (b->size < ref)
 	{
-		if (a->top->nb > ps->median)
+		if (a->top->nb > median)
 			rotate(a, STACK_A);
 		else
 			push(a, b, STACK_B);
 	}
 }
 
-void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
+void	ps_quick_sort_bigger(t_stack *a, t_stack *b, int median, int ref) // joga no a
 {
 	while (a->size < ref)
 	{
-		if (b->top->nb <= ps->median)
+		if (b->top->nb <= median)
 			rotate(b, STACK_B);
 		else
 			push(b, a, STACK_A);
@@ -88,7 +88,7 @@ t_quick_sort	ps_section_size(int size)
 
 	if (size % 2 == ODD)
 	{
-		qs.a_size = size / 2 + 1;
+		qs.a_size = size / 2 + 1; // a mediana estará sempre no a
 		qs.b_size = qs.a_size - 1;
 	}
 	else
@@ -103,15 +103,15 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 {
 	t_quick_sort	qs;
 
+	ps_set(a, ps, a->size);
 	qs = ps_section_size(a->size);
-	ps_quick_sort_smaller(a, b, ps, b->size + qs.b_size);
+	ps_quick_sort_smaller(a, b, ps->median, b->size + qs.b_size);
 	if (a->size > 13)
 	{
-		ps_set(a, ps, a->size);
 		ps_big_step1(a, b, ps);
 		ps_set(b, ps, qs.b_size);
 		qs = ps_section_size(qs.b_size);
-		ps_quick_sort_bigger(a, b, ps, a->size + qs.a_size);
+		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
 		//if (qs.a_size > 13) //// AQUI!!!!!!!!!!!!!!!!!!!!!
 		ps_selection_sort(a, b, b->size);
 		ps_selection_sort_section_b(a, b, qs.b_size);
@@ -125,7 +125,6 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 
 void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps)
 {
-	ps_set(a, ps, a->size);
 	ps_big_step1(a, b, ps);
 	/* ft_printf("Result:\n");
 	print_stack2(a);

@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 14:43:33 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 15:15:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ double	ps_median(t_push_swap *ps)
 	i = 0;
 	dlst_sort(ps->order->top);
 	aux = ps->order->top;
-	if (ps->order->size % 2 == 1)
+	if (ps->order->size % 2 == ODD)
 	{
 		while (++i <= ps->order->size / 2)
 			aux = aux->next;
