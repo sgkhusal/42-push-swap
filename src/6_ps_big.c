@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 00:58:25 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 14:31:38 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ps_quick_sort_bigger(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 	//print_stack2(b);
 	while (a->size < ref)
 	{
-		if (b->top->nb < ps->median)
+		if (b->top->nb <= ps->median)
 			rotate(b, STACK_B);
 		else
 			push(b, a, STACK_A);
@@ -132,6 +132,7 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 		else
 			qty_b = qty_a;
 		ps_quick_sort_bigger(a, b, ps, a->size + qty_a);
+		//if (qty_a > 13) //// fodeu!!!!
 		ps_selection_sort(a, b, b->size);
 		ps_selection_sort_section_b(a, b, qty_b);
 	}
