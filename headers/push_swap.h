@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 17:38:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:43:22 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define STACK_A 'a'
 # define STACK_B 'b'
+# define STACK_A_B 'c'
 
 # define ORDER 0
 # define NOT_ORDER 1
