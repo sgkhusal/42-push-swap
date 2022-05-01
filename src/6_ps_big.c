@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 15:42:35 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 17:48:53 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	if (ps->order != NULL)
 		clean_stack(ps->order);
 	ps->order = init_stack();
-	ps->order->top = dlstdup(s->top, size);
+	if (ps->status >= ORDER)
+		ps->order->top = dlstdup_small(s->top, s->size, size);
+	else
+		ps->order->top = dlstdup(s->top, size);
 	ps->order->max = s->max;
 	ps->order->min = s->min;
 	ps->order->size = size;
@@ -65,15 +68,23 @@ void	ps_quick_sort_smaller1(t_stack *a, t_stack *b, t_push_swap *ps, int ref) //
 {
 	while (b->size < ref)
 	{
-		if (a->top->nb >= ps->median)
+		if ((b->size > 1 && b->top->nb < ps->median2))
 		{
-			if ((b->size > 1 && b->top->nb < ps->median2))
+			if (a->top->nb >= ps->median)
 				double_rotate(a, b);
 			else
-				rotate(a, STACK_A);
+			{
+				rotate(b, STACK_B);
+				push(a, b, STACK_B);
+			}
 		}
 		else
-			push(a, b, STACK_B);
+		{
+			if (a->top->nb >= ps->median)
+				rotate(a, STACK_A);
+			else
+				push(a, b, STACK_B);
+		}
 	}
 }
 
@@ -86,6 +97,27 @@ void	ps_quick_sort_smaller2(t_stack *a, t_stack *b, t_push_swap *ps, int ref) //
 		else
 			push(a, b, STACK_B);
 	}
+}
+
+void	ps_quick_sort_smaller3(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
+{
+	while (a->top->nb <= ps->order->max)
+	{
+		if (a->top->nb >= ps->median)
+			rotate(a, STACK_A);
+		else
+			push(a, b, STACK_B);
+	}
+	while (a->size < ref)
+	{
+		reverse_rotate(a, STACK_A);
+		if (a->top->nb > ps->median) //
+			push(a, b, STACK_B);
+	}
+	if (ps->status > ORDER)
+		ps->status = NOT_ORDER;
+	else if (ps->status == NOT_ORDER)
+		ps->status = ORDER;
 }
 
 void	ps_quick_sort_bigger(t_stack *a, t_stack *b, double median, int ref) // joga no a
@@ -133,8 +165,14 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 	t_quick_sort	qs;
 
 	ps_set(a, ps, size);
+	//print_stack2(ps->order);
 	qs = ps_section_size(size);
-	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size); // 125, 63/62, 32/31, 16, 8
+	/* if (ps->status > ORDER)
+		ps_quick_sort_smaller3(a, b, ps, b->size + qs.b_size); // 125, 63/62, 32/31, 16, 8
+	else */
+		ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size); // 125, 63/62, 32/31, 16, 8
+	if (ps->status == ORDER)
+		ps->status++;
 	if (qs.a_size > 13) // 125, 63/62, 32/31, 16
 	{
 		ps_big_step1(a, b, ps, qs.a_size); // 63/62, 32/31, 16
@@ -162,9 +200,12 @@ void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps)
 	qs = ps_section_size(a->size);
 	ps->median2 = ps_second_median(ps, STACK_B);
 	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size);
+	ps->status = NOT_ORDER;
 	while (qs.a_size > 13)
 	{
+		//ft_printf("qs.a_size = %i\n", qs.a_size);
 		ps_big_step1(a, b, ps, qs.a_size); // 250 -> resolve a primeira metade , 125, 63 , 31, 16
+		ps->status = ORDER;
 		ps_set(b, ps, qs.b_size); // 250
 		qs = ps_section_size(qs.b_size);
 		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size); // 250b -> 125a // 125 -> 63 // 62 -> 31 // 31 -> 16 // 15 -> 8
