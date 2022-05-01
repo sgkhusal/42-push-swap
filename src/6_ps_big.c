@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 01:55:50 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 13:05:58 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ void	print_stack2(t_stack *stack)
 
 /* static void	ps_rotate(t_stack *a, t_stack *b, t_push_swap *ps)
 {
-	if (a->top->nb > ps->median && (b->size > 1 && b->top->nb < b->bottom->nb))
+	if ((b->size > 1 && b->top->nb <= ps->median2))
 		double_rotate(a, b);
-	else if (a->top->nb > ps->median)
+	else
 		rotate(a, STACK_A);
-	else if (b->size > 1 && b->top->nb < b->bottom->nb)
-		rotate(b, STACK_B);
 } */
 
 static void	ps_set(t_stack *s, t_push_swap *ps, int size)
@@ -63,11 +61,27 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	ps->median = ps_median(ps);
 }
 
-void	ps_quick_sort_smaller(t_stack *a, t_stack *b, double median, int ref) // joga no b
+void	ps_quick_sort_smaller1(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
 {
 	while (b->size < ref)
 	{
-		if (a->top->nb >= median)
+		if (a->top->nb >= ps->median)
+		{
+			if ((b->size > 1 && b->top->nb <= ps->median2))
+				double_rotate(a, b);
+			else
+				rotate(a, STACK_A);
+		}
+		else
+			push(a, b, STACK_B);
+	}
+}
+
+void	ps_quick_sort_smaller2(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
+{
+	while (b->size < ref)
+	{
+		if (a->top->nb >= ps->median)
 			rotate(a, STACK_A);
 		else
 			push(a, b, STACK_B);
@@ -102,27 +116,38 @@ t_quick_sort	ps_section_size(int size)
 	return(qs);
 }
 
-void	ps_big_step2(t_stack *a, t_stack *b, t_push_swap *ps, t_quick_sort qs)
+/* void	ps_big_step3(t_stack *a, t_stack *b, t_push_swap *ps, t_quick_sort qs)
 {
-	t_quick_sort	tmp;
 
-	ps_set(a, ps, qs.a_size);
-	tmp = qs;
-	qs = ps_section_size(qs.a_size);
-	ps_quick_sort_smaller(a, b, ps->median, b->size + qs.b_size);
-	/* if (qs.a_size > 13)
+} */
+
+void	ps_big_step2(t_stack *a, t_stack *b, t_push_swap *ps, int size)
+{
+	t_quick_sort	qs;
+
+	ps_set(a, ps, size);
+	qs = ps_section_size(size);
+	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size); // 63/62, 32/31, 16, 8
+	if (qs.a_size > 13) // 63/62, 32/31, 16
 	{
-		ps_big_step1(a, b, ps, qs.a_size);
+		ps_big_step2(a, b, ps, qs.a_size); // 32/31, 16
 		ps_set(b, ps, qs.b_size);
 		qs = ps_section_size(qs.b_size);
 		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
 		//if (qs.a_size > 13)
 		//	ps_big_step2(a, b, ps, qs);
-	} */
-	if (ps_check_order(a->top) != ORDER)
+	}
+	if (ps_check_order(a->top) != ORDER) // 8, 8 (16)
 		ps_selection_sort(a, b, b->size);
 	ps_selection_sort_section_b(a, b, qs.b_size);
-	qs = tmp;
+	/* if (b->size > 13)
+	{
+		ps_set(b, ps, qs.b_size);
+		qs = ps_section_size(qs.b_size);
+		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
+		ps_selection_sort(a, b, b->size);
+		ps_selection_sort_section_b(a, b, qs.b_size);
+	} */
 }
 
 void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps, int size)
@@ -131,17 +156,23 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 
 	ps_set(a, ps, size);
 	qs = ps_section_size(size);
-	ps_quick_sort_smaller(a, b, ps->median, b->size + qs.b_size);
-	if (qs.a_size > 13)
+	ps->median2 = ps_second_median(ps, STACK_B);
+	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size); // 250, 125, 63/62, 32/31, 16, 8
+	if (qs.a_size > 13) // 250, 125, 63/62, 32/31, 16
 	{
 		ps_big_step1(a, b, ps, qs.a_size);
 		ps_set(b, ps, qs.b_size);
 		qs = ps_section_size(qs.b_size);
-		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
+		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size); // 125, 63/62, 32/31, 16, 8
 		if (qs.a_size > 13)
-			ps_big_step2(a, b, ps, qs);
+		{
+			ps_big_step2(a, b, ps, qs.a_size); // 125, 63/62, 32/31, 16
+			/* ps_set(b, ps, qs.b_size);
+			qs = ps_section_size(qs.b_size);
+			ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size); */
+		}
 	}
-	if (ps_check_order(a->top) != ORDER)
+	if (ps_check_order(a->top) != ORDER) // 8, 8 (16),
 		ps_selection_sort(a, b, b->size);
 	ps_selection_sort_section_b(a, b, qs.b_size);
 }

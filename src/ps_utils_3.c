@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 15:15:17 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 12:20:06 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,34 @@ double	ps_median(t_push_swap *ps)
 	else
 	{
 		while (++i <= (ps->order->size - 1) / 2)
+			aux = aux->next;
+		return (((double)(aux->nb + aux->next->nb)) / 2);
+	}
+}
+
+double	ps_second_median(t_push_swap *ps, char s)
+{
+	int		i;
+	int		size;
+	t_dlist	*aux;
+	t_quick_sort	qs;
+
+	i = 0;
+	qs = ps_section_size(ps->order->size);
+	aux = ps->order->top;
+	if (s == STACK_B)
+		size = qs.b_size;
+	else
+		size = qs.a_size;
+	if (size % 2 == ODD)
+	{
+		while (++i <= size / 2)
+			aux = aux->next;
+		return (aux->nb);
+	}
+	else
+	{
+		while (++i <= (size - 1) / 2)
 			aux = aux->next;
 		return (((double)(aux->nb + aux->next->nb)) / 2);
 	}

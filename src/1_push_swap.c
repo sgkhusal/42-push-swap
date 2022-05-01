@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/29 14:37:45 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 12:57:08 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	main(int argc, char *argv[])
 	}
 	clean_stack(data.stack_a);
 	clean_stack(data.stack_b);
+	clean_stack(data.order);
 	return (0);
 }

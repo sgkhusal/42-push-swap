@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 14:55:37 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 12:20:56 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_push_swap
 	t_stack	*stack_b;
 	t_stack	*order;
 	double	median;
+	double	median2;
 }			t_push_swap;
 
 t_stack	*init_stack(void);
@@ -80,6 +81,8 @@ int		stack_max(t_stack *stack);
 int		stack_min(t_stack *stack);
 void	ft_swap(int *a, int *b);
 double	ps_median(t_push_swap *ps);
+double	ps_second_median(t_push_swap *ps, char s);
+t_quick_sort	ps_section_size(int size);
 
 void	ps_order_3(t_stack *stack, char s);
 void	ps_small(t_stack *a, t_stack *b);
