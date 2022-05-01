@@ -6,13 +6,14 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 16:30:23 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:16:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h> //////
 
-void	print_stack2(t_stack *stack)
+/* static void	print_stack2(t_stack *stack)
 {
 	t_dlist	*tmp;
 
@@ -23,7 +24,7 @@ void	print_stack2(t_stack *stack)
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
-}
+} */
 
 /* static void	ps_swap(t_stack *a, t_stack *b)
 {
@@ -60,18 +61,18 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	ps->median = ps_median(ps);
 }
 
-void	ps_quick_sort_smaller(t_stack *a, t_stack *b, int median, int ref) // joga no b
+void	ps_quick_sort_smaller(t_stack *a, t_stack *b, double median, int ref) // joga no b
 {
 	while (b->size < ref)
 	{
-		if (a->top->nb > median)
+		if (a->top->nb >= median)
 			rotate(a, STACK_A);
 		else
 			push(a, b, STACK_B);
 	}
 }
 
-void	ps_quick_sort_bigger(t_stack *a, t_stack *b, int median, int ref) // joga no a
+void	ps_quick_sort_bigger(t_stack *a, t_stack *b, double median, int ref) // joga no a
 {
 	while (a->size < ref)
 	{
@@ -125,7 +126,8 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps)
 
 void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps)
 {
-	ps_big_step1(a, b, ps);
+	//while (ps_check_order(a->top) != ORDER)
+		ps_big_step1(a, b, ps);
 	/* ft_printf("Result:\n");
 	print_stack2(a);
 	if (b->size > 0)
