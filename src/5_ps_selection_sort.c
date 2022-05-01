@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 22:17:39 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/30 22:15:07 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:52:51 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	dlist_max_pos(t_stack *s)
 
 	aux = s->top;
 	pos = 1;
-	while (aux->nb != s->max)
+	while (aux && aux->nb != s->max)
 	{
 		aux = aux->next;
 		pos++;
