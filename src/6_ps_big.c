@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 13:05:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 13:42:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,24 @@ t_quick_sort	ps_section_size(int size)
 void	ps_big_step2(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 {
 	t_quick_sort	qs;
+	//t_quick_sort	tmp;
 
 	ps_set(a, ps, size);
 	qs = ps_section_size(size);
 	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size); // 63/62, 32/31, 16, 8
-	if (qs.a_size > 13) // 63/62, 32/31, 16
+	/* if (qs.a_size > 13) // 63/62, 32/31, 16
 	{
 		ps_big_step2(a, b, ps, qs.a_size); // 32/31, 16
 		ps_set(b, ps, qs.b_size);
 		qs = ps_section_size(qs.b_size);
-		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
+		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size); */
+		/* if (ps_check_order(a->top) != ORDER) // 8, 8 (16)
+			ps_selection_sort(a, b, b->size);
+		ps_selection_sort_section_b(a, b, qs.b_size);
+		qs = tmp; */
 		//if (qs.a_size > 13)
 		//	ps_big_step2(a, b, ps, qs);
-	}
+	//}
 	if (ps_check_order(a->top) != ORDER) // 8, 8 (16)
 		ps_selection_sort(a, b, b->size);
 	ps_selection_sort_section_b(a, b, qs.b_size);
