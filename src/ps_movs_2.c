@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mov_rotate.c                                       :+:      :+:    :+:   */
+/*   ps_movs_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/18 19:33:04 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:43:39 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	rotate(t_stack *stack, char s)
 
 void	double_rotate(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(stack_a, STACK_A);
-	rotate(stack_b, STACK_B);
+	rotate(stack_a, STACK_A_B);
+	rotate(stack_b, STACK_A_B);
 	ft_putstr_fd("rr\n", 1);
 }
 
@@ -49,7 +49,7 @@ void	reverse_rotate(t_stack *stack, char s)
 
 void	double_reverse_rotate(t_stack *stack_a, t_stack *stack_b)
 {
-	reverse_rotate(stack_a, STACK_A);
-	reverse_rotate(stack_b, STACK_B);
+	reverse_rotate(stack_a, STACK_A_B);
+	reverse_rotate(stack_b, STACK_A_B);
 	ft_putstr_fd("rrr\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/28 22:30:19 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:45:24 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	swap(t_dlist *lst, char s)
 
 void	double_swap(t_dlist *lst_a, t_dlist *lst_b)
 {
-	ft_swap(&lst_a->nb, &lst_a->next->nb);
-	ft_swap(&lst_b->nb, &lst_b->next->nb);
+	swap(lst_a, STACK_A_B);
+	swap(lst_b, STACK_A_B);
 	ft_putstr_fd("ss\n", 1);
 }
 
