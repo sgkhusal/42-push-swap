@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 20:28:14 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 20:39:01 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,15 @@ void	ps_quick_sort_smaller1(t_stack *a, t_stack *b, t_push_swap *ps, int ref) //
 {
 	while (b->size < ref)
 	{
-		if ((b->size > 1 && b->top->nb < ps->median2))
+		if (a->top->nb >= ps->median)
 		{
-			if (a->top->nb >= ps->median)
+			if (b->size > 1 && b->top->nb < ps->median2)
 				double_rotate(a, b);
 			else
-			{
-				rotate(b, STACK_B);
-				push(a, b, STACK_B);
-			}
+				rotate(a, STACK_A);
 		}
 		else
-		{
-			if (a->top->nb >= ps->median)
-				rotate(a, STACK_A);
-			else
-				push(a, b, STACK_B);
-		}
+			push(a, b, STACK_B);
 	}
 }
 
