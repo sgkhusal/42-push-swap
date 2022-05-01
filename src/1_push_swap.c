@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 12:57:08 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 15:37:22 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char *argv[])
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	push_swap(data.stack_a, data.stack_b, &data);
-	if (ps_check_order(data.stack_a->top) == ORDER && data.stack_b->size == 0)
+	/* if (ps_check_order(data.stack_a->top) == ORDER && data.stack_b->size == 0)
 	{
 		ft_printf("\033[38;5;83m");
 		ft_printf("OK\n");
@@ -49,7 +49,7 @@ int	main(int argc, char *argv[])
 		ft_printf("\033[38;5;196m");
 		ft_printf("NOT OK\n");
 		ft_printf("\033[0m");
-	}
+	} */
 	clean_stack(data.stack_a);
 	clean_stack(data.stack_b);
 	clean_stack(data.order);
