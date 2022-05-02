@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 00:05:17 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:41:36 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ double	ps_median(t_push_swap *ps);
 double	ps_second_median(t_push_swap *ps, char s);
 t_quick_sort	ps_section_size(int size);
 
-void	ps_order_3(t_stack *stack, char s);
+void	ps_order_3(t_stack *stack);
 void	ps_small(t_stack *a, t_stack *b);
 void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps);
 void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size);

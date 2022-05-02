@@ -6,47 +6,11 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 22:17:39 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 02:17:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:41:52 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* static int	dlist_section_nb_pos(t_stack *s, int nb, int section_size)
-{
-	t_dlist	*aux;
-	int		pos;
-
-	aux = s->top;
-	pos = 1;
-	while (pos < section_size)
-	{
-		if (aux->nb == nb)
-			return (pos);
-		aux = aux->next;
-		pos++;
-	}
-	return (pos);
-}
-
-static int	dlist_section_max(t_stack *s, int section_size)
-{
-	t_dlist	*aux;
-	int		max;
-	int		i;
-
-	aux = s->top;
-	max = aux->nb;
-	i = 1;
-	while (i < section_size && aux->next)
-	{
-		if (max < aux->next->nb)
-			max = aux->next->nb;
-		aux = aux->next;
-		i++;
-	}
-	return (max);
-} */
 
 static int	dlist_min_pos(t_stack *s)
 {
@@ -95,7 +59,7 @@ void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size)
 		push(a, b, STACK_B);
 	}
 	if (a->size == 3)
-		ps_order_3(a, STACK_A);
+		ps_order_3(a);
 	while (b->size > b_init_size)
 		push(b, a, STACK_A);
 }

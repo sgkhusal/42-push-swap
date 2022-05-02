@@ -6,20 +6,20 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:22:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/25 23:34:14 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:42:10 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_order_3(t_stack *a, char s)
+void	ps_order_3(t_stack *a)
 {
 	if (a->top->nb == a->max)
-		rotate(a, s);
+		rotate(a, STACK_A);
 	else if (a->top->next->nb == a->max)
-		reverse_rotate(a, s);
+		reverse_rotate(a, STACK_A);
 	if (a->top->nb > a->top->next->nb)
-		swap(a->top, s);
+		swap(a->top, STACK_A);
 }
 
 static void	ps_small_swap(t_stack *a, t_stack *b)
@@ -48,7 +48,7 @@ static void	ps_small_part1(t_stack *a, t_stack *b)
 	a->top->nb != a->min))
 		ps_small_swap(a, b);
 	else if (a->size == 3)
-		ps_order_3(a, STACK_A);
+		ps_order_3(a);
 	else if (ps_check_order(a->top) != ORDER)
 		push(a, b, STACK_B);
 }
