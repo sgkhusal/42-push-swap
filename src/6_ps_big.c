@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 00:16:33 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:49:18 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	if (ps->order != NULL)
 		clean_stack(ps->order);
 	ps->order = init_stack();
-	ps->order->top = dlstdup_order(s->top, s->size, size);
+	ps->order->top = dlstdup(s->top, size);
 	ps->order->max = stack_max(s);
 	ps->order->min = stack_min(s);
 	ps->order->size = size;

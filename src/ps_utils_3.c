@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 23:57:27 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:56:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_dlist	*dlstdup(t_dlist *lst, int size)
 	return (s.top);
 }
 
-t_dlist	*dlstdup_order(t_dlist *lst, int size, int sub_size)
+t_dlist	*dlstdup_order(t_dlist *lst, int size, int sub_size) //////
 {
 	t_dlist	*aux1;
 	t_dlist	*aux2;
@@ -82,8 +82,7 @@ double	ps_median(t_push_swap *ps)
 	t_dlist	*aux;
 
 	i = 0;
-	if (ps_check_order(ps->order->top) != ORDER)
-		dlst_sort(ps->order->top);
+	dlst_sort(ps->order->top);
 	aux = ps->order->top;
 	if (ps->order->size % 2 == ODD)
 	{
