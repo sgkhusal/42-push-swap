@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 22:00:44 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 00:16:33 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,9 @@ static void	ps_set(t_stack *s, t_push_swap *ps, int size)
 	if (ps->order != NULL)
 		clean_stack(ps->order);
 	ps->order = init_stack();
-	if (ps->status >= ORDER)
-		ps->order->top = dlstdup_small(s->top, s->size, size);
-	else
-		ps->order->top = dlstdup(s->top, size);
-	ps->order->max = s->max;
-	ps->order->min = s->min;
+	ps->order->top = dlstdup_order(s->top, s->size, size);
+	ps->order->max = stack_max(s);
+	ps->order->min = stack_min(s);
 	ps->order->size = size;
 	ps->median = ps_median(ps);
 }
@@ -147,6 +144,12 @@ void	ps_big_step2(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 	ps_set(a, ps, size);
 	qs = ps_section_size(size);
 	ps_quick_sort_smaller2(a, b, ps, b->size + qs.b_size);
+	/* ft_printf("\nStack division - big step2:\n");
+	ft_printf("qs_a: %i, qs_b: %i\n", qs.a_size, qs.b_size);
+	ft_printf("median: %i\n", (int)ps->median);
+	print_stack2(ps->order);
+	print_stack2(a);
+	print_stack2(b); */
 	if (ps_check_order(a->top) != ORDER)
 		ps_selection_sort(a, b, b->size);
 	ps_selection_sort_section_b(a, b, qs.b_size);
@@ -156,6 +159,11 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 {
 	t_quick_sort	qs;
 
+	if (ps->status > ORDER)
+	{
+		while (a->bottom->nb != a->max)
+			reverse_rotate(a, STACK_A);
+	}
 	ps_set(a, ps, size);
 	qs = ps_section_size(size);
 	//if (ps->status <= ORDER)
@@ -177,9 +185,20 @@ void	ps_big_step1(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 		ps_set(b, ps, qs.b_size);
 		qs = ps_section_size(qs.b_size);
 		ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size); // 31, 16, 8
-		if (qs.a_size > 13) // 31, 16 // comentar
-			ps_big_step2(a, b, ps, qs.a_size); // 31, 16
 		/* ft_printf("\nStack division - big step1 2:\n");
+		ft_printf("qs_a: %i, qs_b: %i\n", qs.a_size, qs.b_size);
+		ft_printf("median: %i\n", (int)ps->median);
+		print_stack2(ps->order);
+		print_stack2(a);
+		print_stack2(b); */
+		if (qs.a_size > 13) // 31, 16 // comentar
+		{
+			ps_big_step2(a, b, ps, qs.a_size); // 31, 16
+			//ps_set(b, ps, qs.b_size);
+			//qs = ps_section_size(qs.b_size);
+			//ps_quick_sort_bigger(a, b, ps->median, a->size + qs.a_size);
+		}
+		/* ft_printf("\nStack division - big step1 3:\n");
 		ft_printf("qs_a: %i, qs_b: %i\n", qs.a_size, qs.b_size);
 		ft_printf("median: %i\n", (int)ps->median);
 		print_stack2(ps->order);

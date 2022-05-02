@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 21:29:40 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 23:57:27 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,21 @@ t_dlist	*dlstdup(t_dlist *lst, int size)
 	return (s.top);
 }
 
-t_dlist	*dlstdup_small(t_dlist *lst, int size, int sub_size)
+t_dlist	*dlstdup_order(t_dlist *lst, int size, int sub_size)
 {
 	t_dlist	*aux1;
 	t_dlist	*aux2;
 
 	aux1 = dlstdup(lst, size);
 	dlst_sort(aux1);
-	aux2 = dlstdup(lst, sub_size);
-	// limpar aux1
-	return (aux2);
+	if (size == sub_size)
+		return (aux1);
+	else
+	{
+		aux2 = dlstdup(lst, sub_size);
+		ft_dlstdel(aux1);
+		return (aux2);
+	}
 }
 
 double	ps_median(t_push_swap *ps)
@@ -77,7 +82,8 @@ double	ps_median(t_push_swap *ps)
 	t_dlist	*aux;
 
 	i = 0;
-	dlst_sort(ps->order->top);
+	if (ps_check_order(ps->order->top) != ORDER)
+		dlst_sort(ps->order->top);
 	aux = ps->order->top;
 	if (ps->order->size % 2 == ODD)
 	{

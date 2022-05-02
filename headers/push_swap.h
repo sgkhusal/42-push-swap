@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 20:43:22 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 00:05:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define STACK_B 'b'
 # define STACK_A_B 'c'
 
-# define ORDER 0
-# define NOT_ORDER 1
+# define ORDER 1
+# define NOT_ORDER 0
 
 # define EVEN 0
 # define ODD 1
@@ -98,7 +98,7 @@ void	ps_close(t_push_swap *data);
 
 t_dlist	*ft_dlstnew(int nb);
 t_dlist	*dlstdup(t_dlist *lst, int size);
-t_dlist	*dlstdup_small(t_dlist *lst, int size, int sub_size);
+t_dlist	*dlstdup_order(t_dlist *lst, int size, int sub_size);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
