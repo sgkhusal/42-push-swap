@@ -6,7 +6,7 @@
 #    By: sguilher <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/28 22:19:51 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/02 16:16:37 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ HEADER_PATH =		headers
 INCLUDES =	-I $(LIBFT_PATH) -I $(PRINTF_PATH) -I $(HEADER_PATH)
 
 SRC_FILES =			1_push_swap.c 2_ps_init.c 3_ps_check_args.c \
-					4_ps_small.c 5_ps_selection_sort.c 6_ps_big.c \
+					4_ps_small.c 5_ps_big.c \
+					6_ps_selection_sort.c 7_quick_sort.c \
 					ps_movs_1.c ps_movs_2.c ps_utils_1.c ps_utils_2.c \
 					ps_utils_3.c clean.c \
-					tests.c tests_mov.c
 #SRC_BONUS_FILES =
 HEADER_FILES =		push_swap.h
 

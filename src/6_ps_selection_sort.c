@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_ps_selection_sort.c                              :+:      :+:    :+:   */
+/*   6_ps_selection_sort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 22:17:39 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 15:41:52 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:14:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size)
 		push(b, a, STACK_A);
 }
 
-void	ps_selection_sort_section_b(t_stack *a, t_stack *b, int section_size)
+void	ps_selection_sort_b(t_stack *a, t_stack *b, int section_size)
 {
 	int	pos;
 	int	final_a_size;
