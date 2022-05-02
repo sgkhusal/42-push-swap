@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/01 17:37:05 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/01 21:29:40 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_dlist	*dlstdup(t_dlist *lst, int size)
 		return (NULL);
 	s.bottom = s.top;
 	aux1 = lst->next;
-	i = 1;
+	i = 2;
 	while (aux1 && i <= size)
 	{
 		aux2 = ft_dlstnew(aux1->nb);
