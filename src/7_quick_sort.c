@@ -6,13 +6,13 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:00:09 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 16:23:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:30:08 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_qs_small1(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
+void	ps_qs_small1(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
 	while (b->size < ref)
 	{
@@ -28,7 +28,7 @@ void	ps_qs_small1(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
 	}
 }
 
-void	ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
+void	ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 {
 	while (b->size < ref)
 	{
@@ -60,7 +60,7 @@ void	ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref) // joga no b
 		ps->status = ORDER;
 } */
 
-void	ps_qs_big(t_stack *a, t_stack *b, double median, int ref) // joga no a
+void	ps_qs_big(t_stack *a, t_stack *b, double median, int ref)
 {
 	while (a->size < ref)
 	{

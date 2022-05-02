@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 15:56:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:30:42 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ double	ps_median(t_push_swap *ps)
 
 double	ps_second_median(t_push_swap *ps, char s)
 {
-	int		i;
-	int		size;
-	t_dlist	*aux;
+	int				i;
+	int				size;
+	t_dlist			*aux;
 	t_quick_sort	qs;
 
 	i = 0;
