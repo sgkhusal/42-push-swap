@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:26:02 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 10:04:47 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/03 11:56:34 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,27 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc == 1)
-        return (0);
-    ft_printf("%s\n", argv[0]);
-    return (0);
+	t_stack *a;
+	t_stack *b;
+	
+	if (argc == 1)
+		return (0);
+	a = ps_init_stack_a(argc - 1, &argv[1]);
+	b = init_stack();
+	ps_read_exec_movs(a, b);
+	if (ps_check_order(a->top) == ORDER && b->size == 0)
+	{
+		ft_printf("\033[38;5;83m");
+		ft_printf("OK\n");
+		ft_printf("\033[0m");
+	}
+	else
+	{
+		ft_printf("\033[38;5;196m");
+		ft_printf("KO\n");
+		ft_printf("\033[0m");
+	}
+	clean_stack(a);
+	clean_stack(b);
+	return (0);
 }

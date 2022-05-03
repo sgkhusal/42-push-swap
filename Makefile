@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 21:41:41 by sguilher          #+#    #+#              #
-#    Updated: 2022/05/03 10:43:20 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/03 11:59:30 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC_FILES =			1_push_swap.c 2_ps_init.c 3_ps_check_args.c \
 					ps_movs_1.c ps_movs_2.c ps_utils_1.c ps_utils_2.c \
 					ps_utils_3.c clean.c
 SRC_BONUS_FILES =	1_checker_bonus.c 2_ps_init_bonus.c 3_ps_check_args_bonus.c \
+					4_ps_read_exec_movs.c ps_movs_1_bonus.c ps_movs_2_bonus.c \
 					ps_utils_1_bonus.c ps_utils_2_bonus.c clean_bonus.c
 HEADER_FILES =		push_swap.h
 HEADER_BONUS_FILE =	checker_bonus.h
