@@ -21,7 +21,7 @@
 # define OK 0
 # define E_MALLOC 2
 # define E_NOT_INT 3
-# define INVALID_MOV 4
+# define E_INVALID_MOV 4
 
 # define ORDER 1
 # define NOT_ORDER 0
