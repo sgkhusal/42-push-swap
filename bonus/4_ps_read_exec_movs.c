@@ -52,7 +52,6 @@ void    ps_read_exec_movs(t_stack *a, t_stack *b)
 		size = ft_strlen(mov) + 1;
 		if (ps_execute_moves(a, b, mov, size) == E_INVALID_MOV)
 		{
-			ft_printf("");
 			free(mov);
 			ps_error_movs(a, b);
 		}
