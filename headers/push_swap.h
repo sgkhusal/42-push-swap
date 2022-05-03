@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 10:14:09 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:35:05 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void			ps_qs_big(t_stack *a, t_stack *b, double median, int ref);
 
 void			clean_stack(t_stack *stack);
 void			ps_error(t_stack *stack);
-void			ps_close(t_push_swap *data);
 
 t_dlist			*ft_dlstnew(int nb);
 t_dlist			*dlstdup(t_dlist *lst, int size);

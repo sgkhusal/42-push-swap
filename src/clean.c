@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:26:22 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/17 04:20:40 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:34:14 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,4 @@ void	ps_error(t_stack *stack)
 		clean_stack(stack);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
-}
-
-void	ps_close(t_push_swap *data)
-{
-	clean_stack(data->stack_a);
-	exit(EXIT_SUCCESS);
 }
