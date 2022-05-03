@@ -36,18 +36,6 @@ int	main(int argc, char *argv[])
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	push_swap(data.stack_a, data.stack_b, &data);
-	/* if (ps_check_order(data.stack_a->top) == ORDER && data.stack_b->size == 0)
-	{
-		ft_printf("\033[38;5;83m");
-		ft_printf("OK\n");
-		ft_printf("\033[0m");
-	}
-	else
-	{
-		ft_printf("\033[38;5;196m");
-		ft_printf("NOT OK\n");
-		ft_printf("\033[0m");
-	} */
 	clean_stack(data.stack_a);
 	clean_stack(data.stack_b);
 	clean_stack(data.order);
