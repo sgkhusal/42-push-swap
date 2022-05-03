@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 09:48:17 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:17:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,18 @@ void	ft_dlstdel(t_dlist *dlist)
 	}
 }
 
-int	ps_add_elem(t_stack *stack, char *nbr, int idx)
+int	ps_add_elem(t_stack *stack, int nbr)
 {
 	t_dlist	*new;
 
-	new = ft_dlstnew(ft_atoi(nbr));
+	new = ft_dlstnew(nbr);
 	if (new == NULL)
 		return (E_MALLOC);
-	if (idx == 0)
+	if (stack->top == NULL && stack->bottom == NULL)
+	{
 		stack->top = new;
+		stack->bottom = new;
+	}
 	ft_dlstadd_back(&stack->bottom, new);
 	return (0);
 }

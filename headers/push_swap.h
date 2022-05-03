@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/02 16:22:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:14:09 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ t_dlist			*dlstdup_order(t_dlist *lst, int size, int sub_size);
 void			ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
 void			ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void			ft_dlstdel(t_dlist *dlist);
+int				ps_add_elem(t_stack *stack, int nbr);
 
 #endif
