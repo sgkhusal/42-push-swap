@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_ps_check_args_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:38:47 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 10:05:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:44:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,4 @@ int	ps_check_char(char *nb)
 		j++;
 	}
 	return (OK);
-}
-
-void	ps_check_input_order(t_stack *stack)
-{
-	if (ps_check_order(stack->top) == ORDER)
-	{
-		clean_stack(stack);
-		exit(EXIT_SUCCESS);
-	}
 }

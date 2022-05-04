@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_ps_init_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 10:41:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:43:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 		i++;
 	}
 	ps_check_repeated_nb(stack);
-	ps_check_input_order(stack);
 }
 
 t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
