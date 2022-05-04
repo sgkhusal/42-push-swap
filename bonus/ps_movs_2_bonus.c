@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_movs_2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 11:35:09 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:01:27 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	rotate(t_stack *stack)
 {
-	stack->top->prev = stack->bottom;
-	stack->bottom->next = stack->top;
-	stack->bottom = stack->top;
+	t_dlist	*tmp;
+
+	tmp = stack->top;
 	stack->top = stack->top->next;
 	stack->top->prev = NULL;
-	stack->bottom->next = NULL;
+	ft_dlstadd_back(&stack->bottom, tmp);
 }
 
 void	double_rotate(t_stack *a, t_stack *b)
@@ -30,11 +30,10 @@ void	double_rotate(t_stack *a, t_stack *b)
 
 void	reverse_rotate(t_stack *stack)
 {
-	stack->top->prev = stack->bottom;
-	stack->bottom->next = stack->top;
-	stack->top = stack->bottom;
+	t_dlist	*tmp;
+
+	tmp = stack->bottom;
 	stack->bottom = stack->bottom->prev;
-	stack->top->prev = NULL;
 	stack->bottom->next = NULL;
 }
 

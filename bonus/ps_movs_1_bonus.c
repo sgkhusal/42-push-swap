@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_movs_1_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 11:37:08 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:00:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	double_swap(t_dlist *lst_a, t_dlist *lst_b)
 
 static void	normal_push(t_stack *src, t_stack *dst)
 {
-	dst->top->prev = src->top;
+	t_dlist	*tmp;
+
+	tmp = src->top;
 	src->top = src->top->next;
-	dst->top->prev->next = dst->top;
-	dst->top = dst->top->prev;
-	dst->top->prev = NULL;
 	src->top->prev = NULL;
+	ft_dlstadd_front(&dst->top, tmp);
 }
 
 void	push(t_stack *src, t_stack *dst)
