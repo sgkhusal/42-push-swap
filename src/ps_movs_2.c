@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_movs_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 09:48:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:15:18 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	rotate(t_stack *stack, char s)
 {
-	stack->top->prev = stack->bottom;
-	stack->bottom->next = stack->top;
-	stack->bottom = stack->top;
+	t_dlist	*tmp;
+
+	tmp = stack->top;
 	stack->top = stack->top->next;
 	stack->top->prev = NULL;
-	stack->bottom->next = NULL;
+	ft_dlstadd_back(&stack->bottom, tmp);
 	if (s == STACK_A)
 		ft_putstr_fd("ra\n", 1);
 	else if (s == STACK_B)
@@ -35,12 +35,12 @@ void	double_rotate(t_stack *stack_a, t_stack *stack_b)
 
 void	reverse_rotate(t_stack *stack, char s)
 {
-	stack->top->prev = stack->bottom;
-	stack->bottom->next = stack->top;
-	stack->top = stack->bottom;
+	t_dlist	*tmp;
+
+	tmp = stack->bottom;
 	stack->bottom = stack->bottom->prev;
-	stack->top->prev = NULL;
 	stack->bottom->next = NULL;
+	ft_dlstadd_front(&stack->top, tmp);
 	if (s == STACK_A)
 		ft_putstr_fd("rra\n", 1);
 	else if (s == STACK_B)
