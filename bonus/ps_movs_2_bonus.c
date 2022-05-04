@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 17:01:27 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:07:40 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	reverse_rotate(t_stack *stack)
 	tmp = stack->bottom;
 	stack->bottom = stack->bottom->prev;
 	stack->bottom->next = NULL;
+	ft_dlstadd_front(&stack->top, tmp);
 }
 
 void	double_reverse_rotate(t_stack *a, t_stack *b)
