@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:28:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 12:06:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:05:36 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ps_error(t_stack *stack);
 void	ps_error_movs(t_stack *a, t_stack *b);
 
 t_dlist	*ft_dlstnew(int nb);
+void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);
+void	ft_dlstadd_back(t_dlist **lst_end, t_dlist *new);
 void	ft_dlstdel(t_dlist *dlist);
 void	ft_swap(int *a, int *b);
 
