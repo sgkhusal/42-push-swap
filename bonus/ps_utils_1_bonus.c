@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utils_1_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 10:23:37 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:04:50 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new)
 {
 	if (lst_init && new)
 	{
+		(*lst_init)->prev = new;
 		new->next = *lst_init;
 		new->prev = NULL;
 		*lst_init = new;
