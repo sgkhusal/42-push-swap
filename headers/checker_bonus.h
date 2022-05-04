@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:28:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 17:05:36 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:15:14 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ps_check_char(char *nb);
 void	ps_check_repeated_nb(t_stack *stack);
 void	ps_check_input_order(t_stack *stack);
 
-void    ps_read_exec_movs(t_stack *a, t_stack *b);
+void	ps_read_exec_movs(t_stack *a, t_stack *b);
 
 void	swap(t_dlist *lst);
 void	double_swap(t_dlist *lst_a, t_dlist *lst_b);

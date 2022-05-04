@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   1_checker_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:26:02 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 11:56:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:14:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_stack *a;
-	t_stack *b;
-	
+	t_stack	*a;
+	t_stack	*b;
+
 	if (argc == 1)
 		return (0);
 	a = ps_init_stack_a(argc - 1, &argv[1]);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   4_ps_read_exec_movs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:00:11 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 12:03:53 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:13:50 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int    ps_execute_moves(t_stack *a, t_stack *b, char *mov, int size)
+int	ps_execute_moves(t_stack *a, t_stack *b, char *mov, int size)
 {
 	if (ft_strncmp(mov, "ra\n", size) == 0)
 		rotate(a);
@@ -41,9 +41,9 @@ int    ps_execute_moves(t_stack *a, t_stack *b, char *mov, int size)
 	return (OK);
 }
 
-void    ps_read_exec_movs(t_stack *a, t_stack *b)
+void	ps_read_exec_movs(t_stack *a, t_stack *b)
 {
-	char   *mov;
+	char	*mov;
 	int		size;
 
 	mov = NULL;
