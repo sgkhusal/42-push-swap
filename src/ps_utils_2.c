@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 02:21:05 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 17:19:03 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:08:23 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ int	ps_check_order(t_dlist *lst)
 		aux2 = aux2->next;
 	}
 	return (ORDER);
+}
+
+t_quick_sort	ps_section_size(int size)
+{
+	t_quick_sort	qs;
+
+	if (size % 2 == ODD)
+	{
+		qs.a_size = size / 2 + 1;
+		qs.b_size = qs.a_size - 1;
+	}
+	else
+	{
+		qs.a_size = size / 2;
+		qs.b_size = qs.a_size;
+	}
+	return (qs);
 }

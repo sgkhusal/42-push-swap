@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 17:21:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 00:14:29 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@
 # define ORDER 1
 # define NOT_ORDER 0
 
-# define EVEN 0
 # define ODD 1
+# define MIN_SIZE 13
+# define MEDIUM 1
+# define BIG 2
 
 typedef struct s_dlist
 {
@@ -81,6 +83,7 @@ void			ft_swap(int *a, int *b);
 int				ps_check_order(t_dlist *lst);
 int				stack_max(t_stack *stack);
 int				stack_min(t_stack *stack);
+void			ps_set(t_stack *s, t_push_swap *ps, int size);
 double			ps_median(t_push_swap *ps);
 double			ps_second_median(t_push_swap *ps, char s);
 t_quick_sort	ps_section_size(int size);
@@ -88,11 +91,10 @@ t_quick_sort	ps_section_size(int size);
 void			ps_order_3(t_stack *stack);
 void			ps_small(t_stack *a, t_stack *b);
 void			ps_big(t_stack *a, t_stack *b, t_push_swap *ps);
-void			ps_selection_sort(t_stack *a, t_stack *b, int b_init_size);
-void			ps_selection_sort_b(t_stack *a, t_stack *b, int section_size);
+void			ps_selection_sort(t_stack *a, t_stack *b, t_quick_sort qs);
 void			ps_qs_small1(t_stack *a, t_stack *b, t_push_swap *ps, int ref);
 void			ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref);
-void			ps_qs_big(t_stack *a, t_stack *b, double median, int ref);
+t_quick_sort	ps_qs_big(t_stack *a, t_stack *b, t_push_swap *ps, int qs_b_size);
 
 void			clean_stack(t_stack *stack);
 void			ps_error(t_stack *stack);

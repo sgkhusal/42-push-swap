@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   6_ps_selection_sort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 22:17:39 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/03 09:48:00 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:43:56 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	dlist_max_pos(t_stack *s)
 	return (pos);
 }
 
-void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size)
+static void	ps_selection_sort_a(t_stack *a, t_stack *b, int b_init_size)
 {
 	int	pos;
 
@@ -64,7 +64,7 @@ void	ps_selection_sort(t_stack *a, t_stack *b, int b_init_size)
 		push(b, a, STACK_A);
 }
 
-void	ps_selection_sort_b(t_stack *a, t_stack *b, int section_size)
+static void	ps_selection_sort_b(t_stack *a, t_stack *b, int section_size)
 {
 	int	pos;
 	int	final_a_size;
@@ -82,4 +82,12 @@ void	ps_selection_sort_b(t_stack *a, t_stack *b, int section_size)
 		}
 		push(b, a, STACK_A);
 	}
+}
+
+void	ps_selection_sort(t_stack *a, t_stack *b, t_quick_sort qs)
+{
+	if (ps_check_order(a->top) != ORDER)
+		ps_selection_sort_a(a, b, b->size);
+	if (b->size > 0)
+		ps_selection_sort_b(a, b, qs.b_size);
 }
