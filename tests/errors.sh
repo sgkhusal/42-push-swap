@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/15 02:07:42 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/15 02:11:09 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/06 01:42:00 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,3 +100,5 @@ printf "$GREY"
 printf "\n"
 echo "./push_swap 10 1 2 3 5 0 9 -2147483649 8"
 ./push_swap 10 1 2 3 5 0 9 -2147483649 8
+
+printf "\n$END"

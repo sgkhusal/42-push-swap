@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 20:17:58 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/21 21:30:03 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/06 01:42:32 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PURPLE="\033[1;35m"
 BLUE="\033[0;36m"
 END="\033[0m"
 QTY_TESTS=100 # change the total of tests
-n=5 # change the stack size
+n=100 # change the stack size
 
 cd .. # change path to push_swap
 
@@ -40,9 +40,10 @@ do
 	printf "\nTest $i: " >> log$n
 	cat numbers >> log$n
 	cat numbers | xargs ./push_swap > result
-	#cat result
+	cat result | grep OK
 	RET=`cat result | wc -l | bc`
-	printf "$BLUE\nTotal moves = $RET\n" 
+	printf "$BLUE"
+	printf "\nTotal moves = $RET\n"
 	printf "\nTotal moves = $RET\n" >> log$n
 	i=$(($i + 1))
 	SUM=$(($SUM + $RET))
