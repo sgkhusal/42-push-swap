@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 14:43:04 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:17:57 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,13 @@ t_stack	*ps_init_stack_a(int stack_size, char *numbers[])
 
 	if (ps_check_char(numbers[0]) == E_NOT_INT)
 		ps_error(NULL);
-	if (stack_size == 1)
-		exit(EXIT_SUCCESS);
-	else
-	{
-		stack = init_stack();
-		stack->size = stack_size;
-		if (stack == NULL)
-			ps_error(NULL);
-		ps_fill_stack_a(stack, stack_size, numbers);
-		stack->max = stack_max(stack);
-		stack->min = stack_min(stack);
-	}
+	stack = init_stack();
+	stack->size = stack_size;
+	if (stack == NULL)
+		ps_error(NULL);
+	ps_fill_stack_a(stack, stack_size, numbers);
+	stack->max = stack_max(stack);
+	stack->min = stack_min(stack);
 	return (stack);
 }
 
