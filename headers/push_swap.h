@@ -6,7 +6,7 @@
 /*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:43:52 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 00:14:29 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 00:33:13 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			ps_big(t_stack *a, t_stack *b, t_push_swap *ps);
 void			ps_selection_sort(t_stack *a, t_stack *b, t_quick_sort qs);
 void			ps_qs_small1(t_stack *a, t_stack *b, t_push_swap *ps, int ref);
 void			ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref);
-t_quick_sort	ps_qs_big(t_stack *a, t_stack *b, t_push_swap *ps, int qs_b_size);
+t_quick_sort	ps_qs_big(t_push_swap *ps, int qs_b_size);
 
 void			clean_stack(t_stack *stack);
 void			ps_error(t_stack *stack);

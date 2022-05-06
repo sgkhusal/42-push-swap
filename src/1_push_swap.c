@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_push_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:46:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 00:01:55 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:43:16 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ static void	push_swap(t_stack *a, t_stack *b, t_push_swap *data)
 		ps_big(a, b, data);
 }
 
-void	print_stack(t_stack *stack)
-{
-	t_dlist	*tmp;
-
-	tmp = stack->top;
-	while (tmp != NULL)
-	{
-		ft_printf("%i ", tmp->nb);
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_push_swap	data;
@@ -49,19 +36,6 @@ int	main(int argc, char *argv[])
 	if (data.stack_b == NULL)
 		ps_error(data.stack_a);
 	push_swap(data.stack_a, data.stack_b, &data);
-	if (ps_check_order(data.stack_a->top) == ORDER && data.stack_b->size == 0)
-	{
-		ft_printf("\033[38;5;83m");
-		ft_printf(" OK\n");
-		ft_printf("\033[0m");
-	}
-	else
-	{
-		ft_printf("\033[38;5;196m");
-		ft_printf(" NOT OK\n");
-		ft_printf("\033[0m");
-	}
-	//print_stack(data.stack_a);
 	clean_stack(data.stack_a);
 	clean_stack(data.stack_b);
 	clean_stack(data.order);

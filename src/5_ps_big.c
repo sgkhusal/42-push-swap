@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_ps_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:37:07 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 00:14:42 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:43:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ps_big_step2(t_stack *a, t_stack *b, t_push_swap *ps, int size)
 	if (qs.a_size > MIN_SIZE)
 	{
 		ps_big_step2(a, b, ps, qs.a_size);
-		qs = ps_qs_big(a, b, ps, qs.b_size);
+		qs = ps_qs_big(ps, qs.b_size);
 		if (qs.a_size > MIN_SIZE)
 			ps_big_step3(a, b, ps, qs.a_size);
 	}
@@ -67,7 +67,7 @@ static void	ps_medium(t_stack *a, t_stack *b, t_push_swap *ps, t_quick_sort qs)
 		{
 			ps->status = ORDER;
 			qs = ps_section_size(qs.b_size);
-			qs = ps_qs_big(a, b, ps, qs.b_size);
+			qs = ps_qs_big(ps, qs.b_size);
 		}
 		else
 		{
@@ -76,12 +76,12 @@ static void	ps_medium(t_stack *a, t_stack *b, t_push_swap *ps, t_quick_sort qs)
 				while (b->bottom->nb >= ps->median2)
 					reverse_rotate(a, STACK_A);
 			}
-			qs = ps_qs_big(a, b, ps, qs.b_size);
+			qs = ps_qs_big(ps, qs.b_size);
 		}
 	}
 	ps_selection_sort(a, b, qs);
 	if (b->size > 0)
-		qs = ps_qs_big(a, b, ps, b->size);
+		qs = ps_qs_big(ps, b->size);
 	ps_selection_sort(a, b, qs);
 }
 
@@ -100,7 +100,7 @@ void	ps_big(t_stack *a, t_stack *b, t_push_swap *ps)
 		{
 			ps_big_step2(a, b, ps, qs.a_size);
 			ps->status = ORDER;
-			qs = ps_qs_big(a, b, ps, qs.b_size);
+			qs = ps_qs_big(ps, qs.b_size);
 		}
 		ps_selection_sort(a, b, qs);
 	}

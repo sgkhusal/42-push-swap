@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   7_quick_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:00:09 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 00:20:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:43:29 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ void	ps_qs_small2(t_stack *a, t_stack *b, t_push_swap *ps, int ref)
 	}
 }
 
-t_quick_sort	ps_qs_big(t_stack *a, t_stack *b, t_push_swap *ps, int qs_b_size)
+t_quick_sort	ps_qs_big(t_push_swap *ps, int qs_b_size)
 {
 	t_quick_sort	qs;
 	int				a_final_size;
 
-	ps_set(b, ps, qs_b_size);
+	ps_set(ps->stack_b, ps, qs_b_size);
 	qs = ps_section_size(qs_b_size);
-	a_final_size = a->size + qs.a_size;
-	while (a->size < a_final_size)
+	a_final_size = ps->stack_a->size + qs.a_size;
+	while (ps->stack_a->size < a_final_size)
 	{
-		if (b->top->nb < ps->median)
-			rotate(b, STACK_B);
+		if (ps->stack_b->top->nb < ps->median)
+			rotate(ps->stack_b, STACK_B);
 		else
-			push(b, a, STACK_A);
+			push(ps->stack_b, ps->stack_a, STACK_A);
 	}
 	return (qs);
 }
