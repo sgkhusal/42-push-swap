@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:28:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/04 17:15:14 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:46:35 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // my libraries and functions
 # include "libft.h"
 # include "ft_printf.h"
-# include "get_next_line.h"
 
 # define OK 0
 # define E_MALLOC 2
