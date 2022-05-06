@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_ps_init_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:17:57 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:39:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 		if (ps_check_char(numbers[i]) == E_NOT_INT)
 			ps_error(stack);
 		nb = ft_atol(numbers[i]);
-		if (nb > 2147483647 || nb < -2147483648)
+		if (nb > INT_MAX || nb < INT_MIN)
 			ps_error(stack);
 		ret = ps_add_elem(stack, nb);
 		if (ret == E_MALLOC)
