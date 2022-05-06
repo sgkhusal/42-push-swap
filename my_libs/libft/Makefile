@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/12 02:08:39 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/11 21:02:37 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/06 01:33:09 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@
 NAME =			libft.a
 
 HEADER =		libft.h
-GNL_HEADER =	get_next_line.h
 
 SRC_PATH =	./src
 GNL_PATH =	./src/gnl
@@ -60,7 +59,7 @@ $(OBJ_PATH)/%.o:	$(SRC_PATH)/%.c $(HEADER)
 	@mkdir -p $(OBJ_PATH)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
-$(OBJ_PATH)/%.o:	$(GNL_PATH)/%.c $(HEADER) $(GNL_HEADER)
+$(OBJ_PATH)/%.o:	$(GNL_PATH)/%.c $(HEADER)
 	@$(CC) $(CFLAGS) $(GNLFLAGS) -c $< -o $@ $(INCLUDES)
 
 $(NAME):	$(OBJS) $(OBJS_GNL)

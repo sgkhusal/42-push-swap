@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 02:05:10 by sguilher          #+#    #+#             */
-/*   Updated: 2022/04/11 21:03:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 01:22:26 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+# define OPEN_MAX 1024
+
+// get_next_line defines
+# define READ_OK 1
+# define MALLOC_ERROR -1
+# define MALLOC_ERROR2 -2
+# define INPUT_ERROR -1
+# define NO_LINE_FEED -1
 
 typedef struct s_list
 {
@@ -66,5 +77,10 @@ t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
+
+// get_next_line
+int					get_next_line(int fd, char **line);
+void				gnl_strjoin(char **next, char *buffer);
+void				ft_clean(char **str);
 
 #endif
