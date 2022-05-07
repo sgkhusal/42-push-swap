@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:00:11 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:45:38 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:03:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ void	ps_read_exec_movs(t_stack *a, t_stack *b)
 		free(mov);
 		mov = NULL;
 	}
+	if (mov)
+		free(mov);
 }
