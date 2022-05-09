@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 09:28:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:46:35 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/08 22:37:49 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int		ps_check_char(char *nb);
 void	ps_check_repeated_nb(t_stack *stack);
 void	ps_check_input_order(t_stack *stack);
 
-void	ps_read_exec_movs(t_stack *a, t_stack *b);
+t_list	*ps_read_movs(t_stack *a, t_stack *b);
+void	ps_execute_moves(t_stack *a, t_stack *b, t_list *movs);
 
 void	swap(t_dlist *lst);
 void	double_swap(t_dlist *lst_a, t_dlist *lst_b);
@@ -63,8 +64,9 @@ void	reverse_rotate(t_stack *stack);
 void	double_reverse_rotate(t_stack *a, t_stack *b);
 
 void	clean_stack(t_stack *stack);
+void	clean_list(t_list *list);
 void	ps_error(t_stack *stack);
-void	ps_error_movs(t_stack *a, t_stack *b);
+void	ps_error_movs(t_stack *a, t_stack *b, t_list *movs);
 
 t_dlist	*ft_dlstnew(int nb);
 void	ft_dlstadd_front(t_dlist **lst_init, t_dlist *new);

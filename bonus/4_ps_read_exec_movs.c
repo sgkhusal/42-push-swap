@@ -6,13 +6,13 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:00:11 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/08 21:55:45 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/09 00:55:09 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int	ps_execute_moves(t_stack *a, t_stack *b, char *mov, int size)
+static void	ps_make_move(t_stack *a, t_stack *b, char *mov, int size)
 {
 	if (ft_strncmp(mov, "ra\n", size) == 0)
 		rotate(a);
@@ -36,28 +36,72 @@ int	ps_execute_moves(t_stack *a, t_stack *b, char *mov, int size)
 		swap(b->top);
 	else if (ft_strncmp(mov, "ss\n", size) == 0)
 		double_swap(a->top, b->top);
-	else
-		return (E_INVALID_MOV);
-	return (OK);
 }
 
-void	ps_read_exec_movs(t_stack *a, t_stack *b)
+void	ps_execute_moves(t_stack *a, t_stack *b, t_list *movs)
 {
-	char	*mov;
-	int		size;
+	t_list	*aux;
 
-	mov = NULL;
-	while (get_next_line(STDIN_FILENO, &mov) > 0)
+	aux = movs;
+	while (aux)
 	{
-		size = ft_strlen(mov) + 1;
-		if (ps_execute_moves(a, b, mov, size) == E_INVALID_MOV)
-		{
-			free(mov);
-			ps_error_movs(a, b);
-		}
-		free(mov);
-		mov = NULL;
+		ps_make_move(a, b, aux->content, ft_strlen(aux->content) + 1);
+		aux = aux->next;
 	}
-	if (mov)
-		free(mov);
+}
+
+static int	ps_check_moves(char *mov, int size)
+{
+	if (ft_strncmp(mov, "ra\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "rb\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "rr\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "rra\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "rrb\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "rrr\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "pa\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "pb\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "sa\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "sb\n", size) == 0)
+		return (OK);
+	else if (ft_strncmp(mov, "ss\n", size) == 0)
+		return (OK);
+	else
+		return (E_INVALID_MOV);
+}
+
+t_list	*ps_read_movs(t_stack *a, t_stack *b)
+{
+	char	*line;
+	int		size;
+	t_list	*movs;
+	t_list	*aux;
+
+	line = NULL;
+	movs = NULL;
+	while (get_next_line(STDIN_FILENO, &line) > 0)
+	{
+		aux = NULL;
+		size = ft_strlen(line) + 1;
+		aux = ft_lstnew(line);
+		ft_lstadd_back(&movs, aux);
+		if (ps_check_moves(line, size) == E_INVALID_MOV || !aux)
+		{
+			if (!aux)
+				free(line);
+			ps_error_movs(a, b, movs);
+		}
+		line = NULL;
+	}
+	if (line)
+		free(line);
+	return (movs);
 }

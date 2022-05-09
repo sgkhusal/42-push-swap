@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguilher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 21:34:27 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:22:51 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/08 23:48:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || BUFFER_SIZE < 1 || line == NULL || fd > OPEN_MAX)
 		return (INPUT_ERROR);
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	tmp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	tmp = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!next[fd])
 		next[fd] = ft_strdup("");
 	if (!buf || !tmp || !next[fd])
