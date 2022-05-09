@@ -6,16 +6,25 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:44:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:28:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	double_swap(t_dlist *lst_a, t_dlist *lst_b)
+{
+	swap(lst_a, STACK_A_B);
+	swap(lst_b, STACK_A_B);
+	ft_putstr_fd("ss\n", 1);
+}
+
 void	rotate(t_stack *stack, char s)
 {
 	t_dlist	*tmp;
 
+	if (stack->size < 2)
+		return ;
 	tmp = stack->top;
 	stack->top = stack->top->next;
 	stack->top->prev = NULL;
@@ -37,6 +46,8 @@ void	reverse_rotate(t_stack *stack, char s)
 {
 	t_dlist	*tmp;
 
+	if (stack->size < 2)
+		return ;
 	tmp = stack->bottom;
 	stack->bottom = stack->bottom->prev;
 	stack->bottom->next = NULL;

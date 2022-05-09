@@ -6,26 +6,18 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:50:16 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/06 01:44:51 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:24:24 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_dlist *lst, char s)
+void	print_push(char s)
 {
-	ft_swap(&lst->nb, &lst->next->nb);
 	if (s == STACK_A)
-		ft_putstr_fd("sa\n", 1);
+		ft_putstr_fd("pa\n", 1);
 	else if (s == STACK_B)
-		ft_putstr_fd("sb\n", 1);
-}
-
-void	double_swap(t_dlist *lst_a, t_dlist *lst_b)
-{
-	swap(lst_a, STACK_A_B);
-	swap(lst_b, STACK_A_B);
-	ft_putstr_fd("ss\n", 1);
+		ft_putstr_fd("pb\n", 1);
 }
 
 static void	update_stack_data(t_stack *src, t_stack *dst)
@@ -50,6 +42,8 @@ static void	normal_push(t_stack *src, t_stack *dst)
 
 void	push(t_stack *src, t_stack *dst, char s)
 {
+	if (src->size < 1)
+		return ;
 	if (dst->top == NULL)
 	{
 		dst->top = src->top;
@@ -69,9 +63,17 @@ void	push(t_stack *src, t_stack *dst, char s)
 	}
 	else
 		normal_push(src, dst);
-	if (s == STACK_A)
-		ft_putstr_fd("pa\n", 1);
-	else if (s == STACK_B)
-		ft_putstr_fd("pb\n", 1);
+	print_push(s);
 	update_stack_data(src, dst);
+}
+
+void	swap(t_dlist *lst, char s)
+{
+	if (!lst || !lst->next)
+		return ;
+	ft_swap(&lst->nb, &lst->next->nb);
+	if (s == STACK_A)
+		ft_putstr_fd("sa\n", 1);
+	else if (s == STACK_B)
+		ft_putstr_fd("sb\n", 1);
 }
