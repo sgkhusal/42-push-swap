@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:37:21 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/08 21:08:00 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:11:23 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ps_fill_stack_a(t_stack *stack, int stack_size, char *numbers[])
 	i = 0;
 	while (i < stack_size)
 	{
-		if (ft_strlen(numbers[i] > 11))
+		if (ft_strlen(numbers[i]) > 11)
 			ps_error(stack);
 		if (ps_check_char(numbers[i]) == E_NOT_INT)
 			ps_error(stack);
